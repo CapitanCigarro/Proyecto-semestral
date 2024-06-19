@@ -18,7 +18,7 @@ public class Asiento {
         return this.numAsiento;
     }
 
-    public boolean getReservado() {
+    public boolean checkReservado() {
         return this.reservado;
 
     }

@@ -1,50 +1,83 @@
 package com.proyecto_semestral.Logic;
 
-public class Bus { // TODO change class to floor
-    private int numAsientos;
-    private String horaSalida, recorrido;
-    private FilaAsientos izquierda, derecha;
+import java.util.ArrayList;
 
-    public Bus(int numAsientos, String horaSalida, String recorrido) {
+public abstract class Bus {
+    private String horaSalida, recorrido;
+    private int numAsientos, numPisos;
+    private ArrayList<Piso> pisos;
+    
+    public Bus(String horaSalida, String recorrido, int numAsientos, int numPisos) {
         this.horaSalida = horaSalida;
         this.recorrido = recorrido;
         this.numAsientos = numAsientos;
-        this.crearFilasAsientos();
-    }
-
-    private void crearFilasAsientos() {
-        this.izquierda = new FilaAsientos();
-        this.derecha = new FilaAsientos();
-        FilaAsientos chosen = this.izquierda;
-
-        for (int i = 1; i <= numAsientos; i++) {
-            chosen.add(new Asiento(i));
-            if(i % 2 == 0) {
-                if(chosen == this.izquierda) {
-                    chosen = this.derecha;
-
-                } else {
-                    chosen = this.izquierda;
-
-                }
-
-            }                
-
-
-        }
+        this.numPisos = numPisos;
+        crearPisos(numAsientos, numPisos);
 
     }
+
+    public int getNumPisos() {
+        return numPisos;
+    }
+
 
     public String getHoraSalida() {
         return horaSalida;
     }
-    
-    public int getNumAsientos() {
-        return numAsientos;
-    }
+
+
 
     public String getRecorrido() {
         return recorrido;
     }
 
+
+
+    public int getNumAsientos() {
+        return numAsientos;
+    }
+
+
+    /**
+     * Crea un ArrayList con los pisos del bus
+     * @param numAsientos Numero de asientos del bus
+     * @param numPisos Numero de pisos del bus
+     */
+
+    public void crearPisos(int numAsientos, int numPisos) {
+        if(numPisos == 1) {
+            pisos.add(new Piso(numAsientos, 0));
+
+        } else {
+            pisos.add(new Piso(numAsientos / 2, 0));
+            pisos.add(new Piso(numAsientos / 2, numAsientos / 2));
+
+        }
+
+    }
+
+    public ArrayList<Piso> getPisos() {
+        return this.pisos;
+
+    }
+
+    public Asiento getAsiento(int numAsiento) {
+        --numAsiento;
+        if(numPisos == 1) {
+            return pisos.get(0).getAsiento(numAsiento);
+
+        } else {
+            if(numAsiento< this.numAsientos / 2) {
+                return pisos.get(0).getAsiento(numAsiento);
+
+            } else {
+                return pisos.get(1).getAsiento(numAsiento - numAsientos / 2);
+
+            }
+
+        }
+
+    } 
+    
+    
 }
