@@ -158,6 +158,6 @@ public class EmpresaBuses {
         return tablaTipoBus;
     }
 
-    
+    public String reservar(ArrayList)
 
 }
