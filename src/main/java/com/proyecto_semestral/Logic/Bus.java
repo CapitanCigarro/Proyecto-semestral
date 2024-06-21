@@ -44,7 +44,7 @@ public abstract class Bus {
      * @param numPisos Numero de pisos del bus
      */
 
-    public void crearPisos(int numAsientos, int numPisos) {
+    private void crearPisos(int numAsientos, int numPisos) {
         if(numPisos == 1) {
             pisos.add(new Piso(numAsientos, 0));
 

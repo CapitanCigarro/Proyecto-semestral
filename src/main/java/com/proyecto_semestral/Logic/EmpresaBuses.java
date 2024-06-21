@@ -25,8 +25,10 @@ public class EmpresaBuses {
      * 4 = Bus 2 pisos
      */
     
-
-    public EmpresaBuses() {
+    /**
+     * Inicializa arreglos
+     */
+    private void inicializarArrays() {
         this.tablaHoraria = new ArrayList<ArrayList<Bus>>();
         this.tablaRecorrido = new ArrayList<ArrayList<Bus>>();
         this.tablaTipoBus = new ArrayList<ArrayList<Bus>>();
@@ -42,6 +44,14 @@ public class EmpresaBuses {
 
         }
 
+    }
+
+
+    /**
+     * Inicializa Buses en la empresa de forma aleatoria 
+     */
+    
+    private void inicializarBuses() {
         Random rng = new Random();
         int[] auxRecorridos = {9, 9, 9, 9, 9};
         int[] auxBus = {9, 9, 9, 9, 9};
@@ -146,6 +156,12 @@ public class EmpresaBuses {
 
     }
 
+    public EmpresaBuses() {
+        this.inicializarArrays();
+        this.inicializarBuses();
+        
+    }
+
     public ArrayList<ArrayList<Bus>> getTablaHoraria() {
         return tablaHoraria;
     }
@@ -158,6 +174,6 @@ public class EmpresaBuses {
         return tablaTipoBus;
     }
 
-    public String reservar(ArrayList)
+    
 
 }

@@ -1,13 +1,26 @@
 package com.proyecto_semestral.Logic;
 
 public class Piso {
-    private int numAsientos, numPrimerAsiento;
+    private int numAsientos, numPrimerAsiento, numPiso;
     private FilaAsientos izquierda, derecha, general;
 
     public Piso(int numAsientos, int numPrimerAsiento) {
         this.numAsientos = numAsientos;
         this.numPrimerAsiento = numPrimerAsiento;
         this.crearFilasAsientos();
+
+        if (numPrimerAsiento == 0) {
+            numPiso = 1;
+
+        } else {
+            numPiso = 2;
+
+        }
+
+    }
+
+    public int getnumPiso() {
+        return this.numPiso;
 
     }
 
@@ -18,7 +31,7 @@ public class Piso {
 
         for (int i = 1; i <= numAsientos; i++) {
             ++numPrimerAsiento;
-            Asiento temp = new Asiento(this.numPrimerAsiento);
+            Asiento temp = new Asiento(this.numPrimerAsiento, this.numPiso);
             general.add(temp);
             chosen.add(temp);
             if(i % 2 == 0) {

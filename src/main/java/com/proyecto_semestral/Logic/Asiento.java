@@ -2,15 +2,22 @@ package com.proyecto_semestral.Logic;
 
 public class Asiento {
     private boolean reservado = false;
-    private int numAsiento;
+    private int numAsiento, piso;
 
-    public Asiento(int numAsiento) {
+    public Asiento(int numAsiento, int piso) {
         this.numAsiento = numAsiento;
+        this.piso = piso;
 
     }
 
+    
     public void reservar() {
         this.reservado = true;
+
+    }
+
+    public void quitarReserva() {
+        this.reservado = false;
 
     }
 
@@ -18,9 +25,13 @@ public class Asiento {
         return this.numAsiento;
     }
 
-    public boolean checkReservado() {
+    public boolean getReservado() {
         return this.reservado;
 
+    }
+
+    public int getPiso() {
+        return this.piso;
     }
 
 }
