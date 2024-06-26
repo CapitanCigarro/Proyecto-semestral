@@ -20,7 +20,7 @@ public class FilaAsientosGui extends ArrayList<AsientoGui>{
 
     public FilaAsientos getFilaAsientos() {
         return this.fila;
-
+        
     }
 
 }
