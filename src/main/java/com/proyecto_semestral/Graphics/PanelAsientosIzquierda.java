@@ -5,19 +5,19 @@ import javax.swing.JPanel;
 import com.proyecto_semestral.Logic.FilaAsientos;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 
-public class AsientosIzquierda extends JPanel{
+public class PanelAsientosIzquierda extends JPanel{
     private FilaAsientosGui filaAsientos;
 
     private int xSize = Sizes.FILAASIENTOS.getXSize();
     private int ySize = Sizes.FILAASIENTOS.getYSize();
 
-    public AsientosIzquierda(FilaAsientos fila, GestorDeReservas g) {
+    public PanelAsientosIzquierda(FilaAsientos fila, GestorDeReservas g) {
         super();
         this.filaAsientos = new FilaAsientosGui(fila, g);
 
         this.setSize(xSize, ySize);
 
-        for (AsientoGui asiento : filaAsientos) {
+        for (ButtonAsientoGui asiento : filaAsientos) {
             this.add(asiento);
 
         }

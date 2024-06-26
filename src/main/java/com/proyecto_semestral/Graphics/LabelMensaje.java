@@ -2,14 +2,14 @@ package com.proyecto_semestral.Graphics;
 
 import javax.swing.JLabel;
 
-public enum Mensaje {
+public enum LabelMensaje {
     MENSAJE;
 
     private String mensaje = "Seleccionar bus";
     private final JLabel label;
-    private final int xSize = 300;
-    private final int ySize = 20;
-    private Mensaje() {
+    private final int xSize = Sizes.MENSAJE.getXSize();
+    private final int ySize = Sizes.MENSAJE.getYSize();
+    private LabelMensaje() {
         this.label = new JLabel();
         this.label.setText(this.mensaje);
         this.label.setSize(xSize, ySize);

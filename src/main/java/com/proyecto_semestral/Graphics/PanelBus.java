@@ -7,21 +7,21 @@ import javax.swing.JPanel;
 import com.proyecto_semestral.Logic.Bus;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 
-public class BusGui extends JPanel {
+public class PanelBus extends JPanel {
     private int xSize = Sizes.BUS.getXSize();
     private int ySize = Sizes.BUS.getYSize();
 
     private Bus bus;
-    private ArrayList<PisoGui> pisos;
+    private ArrayList<PanelPiso> pisos;
     
-    public BusGui(Bus b, GestorDeReservas g) {
+    public PanelBus(Bus b, GestorDeReservas g) {
         super();
         this.setSize(xSize, ySize);
         this.bus = b;
-        this.pisos = new ArrayList<PisoGui>();
+        this.pisos = new ArrayList<PanelPiso>();
 
         for (int i = 0; i < bus.getNumPisos(); i++) {
-            PisoGui piso = new PisoGui(this.bus.getPisos().get(i), g);
+            PanelPiso piso = new PanelPiso(this.bus.getPisos().get(i), g);
             this.add(piso);
             this.pisos.add(piso);
 
@@ -33,8 +33,10 @@ public class BusGui extends JPanel {
         return bus;
     }
 
-    public ArrayList<PisoGui> getPisos() {
+    public ArrayList<PanelPiso> getPisos() {
         return pisos;
     }
+
+    
 
 }

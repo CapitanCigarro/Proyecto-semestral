@@ -5,20 +5,20 @@ import javax.swing.JPanel;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 import com.proyecto_semestral.Logic.Piso;
 
-public class PisoGui extends JPanel{
+public class PanelPiso extends JPanel{
     Piso piso;
-    AsientosDerecha asientosDerecha;
-    AsientosIzquierda asientosIzquierda;
+    PanelAsientosDerecha asientosDerecha;
+    PanelAsientosIzquierda asientosIzquierda;
     private int xSize = Sizes.PISO.getXSize();
     private int ySize = Sizes.PISO.getYSize();
 
-    public PisoGui(Piso piso, GestorDeReservas g) {
+    public PanelPiso(Piso piso, GestorDeReservas g) {
         super();
         this.setSize(xSize, ySize);
         this.piso = piso;
 
-        this.asientosDerecha = new AsientosDerecha(piso.getFilaDerecha(), g);
-        this.asientosIzquierda = new AsientosIzquierda(piso.getFilaIzquierda(), g);
+        this.asientosDerecha = new PanelAsientosDerecha(piso.getFilaDerecha(), g);
+        this.asientosIzquierda = new PanelAsientosIzquierda(piso.getFilaIzquierda(), g);
 
         this.add(asientosDerecha);
         this.add(asientosIzquierda);
@@ -29,11 +29,11 @@ public class PisoGui extends JPanel{
         return piso;
     }
 
-    public AsientosDerecha getAsientosDerecha() {
+    public PanelAsientosDerecha getAsientosDerecha() {
         return asientosDerecha;
     }
 
-    public AsientosIzquierda getAsientosIzquierda() {
+    public PanelAsientosIzquierda getAsientosIzquierda() {
         return asientosIzquierda;
     }
     

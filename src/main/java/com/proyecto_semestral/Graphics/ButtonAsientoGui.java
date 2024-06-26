@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import com.proyecto_semestral.Logic.*;
 
-public class AsientoGui extends JButton {
+public class ButtonAsientoGui extends JButton {
     private GestorDeReservas g;
     private Asiento asiento;
-    private int xSize = 10, ySize = 10;
+    private int xSize = Sizes.ASIENTO.getXSize(), ySize = Sizes.ASIENTO.getYSize();
 
-    public AsientoGui(Asiento asiento, GestorDeReservas g) {
+    public ButtonAsientoGui(Asiento asiento, GestorDeReservas g) {
         super();
         this.asiento = asiento;
         this.g = g;
@@ -33,7 +33,7 @@ public class AsientoGui extends JButton {
                     g.cambiarSeleccion(asiento.getNumAsiento());  
 
                 } catch (NoBusSeleccionadoException ex) {
-                    Mensaje.MENSAJE.setText("Seleccionar un bus antes de intentar esta accion");
+                    LabelMensaje.MENSAJE.setText("Seleccionar un bus antes de intentar esta accion");
 
                 }
                 

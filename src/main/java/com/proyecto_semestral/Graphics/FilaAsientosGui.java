@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.proyecto_semestral.Logic.*;
 
-public class FilaAsientosGui extends ArrayList<AsientoGui>{
+public class FilaAsientosGui extends ArrayList<ButtonAsientoGui>{
     private FilaAsientos fila;
 
     public FilaAsientosGui(FilaAsientos fila, GestorDeReservas g) {
@@ -12,7 +12,7 @@ public class FilaAsientosGui extends ArrayList<AsientoGui>{
         this.fila = fila;
 
         for(Asiento asiento : fila) {
-            this.add(new AsientoGui(asiento, g));
+            this.add(new ButtonAsientoGui(asiento, g));
 
         }
 
