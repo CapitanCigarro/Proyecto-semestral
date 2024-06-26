@@ -8,7 +8,7 @@ public class GestorDeReservas {
 
     public GestorDeReservas() {}
 
-    public void añadirAsiento(int i) {
+    private void añadirSeleccion(int i) {
         this.aL.add(i);
 
     }
@@ -18,7 +18,7 @@ public class GestorDeReservas {
 
     }
 
-    public void quitarSeleccion(int i) {
+    private void quitarSeleccion(int i) {
         if (this.aL.contains(Integer.valueOf(i))) {
             this.aL.remove(Integer.valueOf(i));
 
@@ -26,11 +26,32 @@ public class GestorDeReservas {
 
     }
 
-    public String reservar() {
-        ArrayList<Integer> reservados, noReservados;
+    public void cambiarSeleccion(int i) throws NoBusSeleccionadoException {
+        NoBusSeleccionadoException();
+        if(aL.contains(Integer.valueOf(i))) {
+            this.añadirSeleccion(i);
+
+        } else {
+            this.quitarSeleccion(i);
+
+        }
+
+    }
+
+    private void NoBusSeleccionadoException() throws NoBusSeleccionadoException {
+        if(busSeleccionado == null) {
+            throw new NoBusSeleccionadoException();
+
+        }
+
+    }
+
+    public String reservar() throws NoBusSeleccionadoException {
+        NoBusSeleccionadoException();
+        ArrayList<Integer> reservados = new ArrayList<Integer>(), noReservados = new ArrayList<Integer>();
         while (true) {
             if (this.aL.isEmpty()) {break;}
-            Integer asientoSeleccionado = aL.remove(0)
+            Integer asientoSeleccionado = aL.remove(0);
             Asiento as = busSeleccionado.getAsiento(asientoSeleccionado);
             
             if (as.getReservado()) {
@@ -101,6 +122,11 @@ public class GestorDeReservas {
         }
 
         return mensaje;
+
+    }
+
+    public void setBusSeleccionado(Bus b) {
+        this.busSeleccionado = b;
 
     }
 

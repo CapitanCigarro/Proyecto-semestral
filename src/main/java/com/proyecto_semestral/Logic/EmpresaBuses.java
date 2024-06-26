@@ -7,6 +7,7 @@ public class EmpresaBuses {
     private ArrayList<ArrayList<Bus>> tablaHoraria;
     private ArrayList<ArrayList<Bus>> tablaRecorrido;
     private ArrayList<ArrayList<Bus>> tablaTipoBus;
+    private GestorDeReservas gestor;
 
     /**
      * Tabla Recorrido Indices
@@ -157,9 +158,15 @@ public class EmpresaBuses {
     }
 
     public EmpresaBuses() {
+        this.gestor = new GestorDeReservas();
         this.inicializarArrays();
         this.inicializarBuses();
         
+    }
+
+    public GestorDeReservas getGestorDeReservas() {
+        return this.gestor;
+
     }
 
     public ArrayList<ArrayList<Bus>> getTablaHoraria() {
