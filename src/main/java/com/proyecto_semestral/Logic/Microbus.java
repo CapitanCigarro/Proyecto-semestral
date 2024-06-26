@@ -9,4 +9,9 @@ public class Microbus extends Bus {
         
     }
 
+    
+    public int getTipoBusIndex() {
+        return ListaBuses.MICROBUS.getIndex();
+    }
+
 }

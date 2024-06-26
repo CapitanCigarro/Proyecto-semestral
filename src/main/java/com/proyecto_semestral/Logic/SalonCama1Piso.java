@@ -8,5 +8,9 @@ public class SalonCama1Piso extends Bus{
         ++cantidad;
 
     }
+    
+    public int getTipoBusIndex() {
+        return ListaBuses.SALONCAMA1PISO.getIndex();
+    }
 
 }

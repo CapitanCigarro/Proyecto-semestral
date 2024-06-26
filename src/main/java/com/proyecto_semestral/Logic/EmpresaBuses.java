@@ -58,16 +58,19 @@ public class EmpresaBuses {
         int[] auxBus = {9, 9, 9, 9, 9};
 
         for (int i = 0; i < 15; i++) {
-            boolean[] auxBusRep = {true, true, true, true, true};
-            boolean[] auxRecRep = {true, true, true, true, true};
+            if (i == 13) {
+                System.out.println("b");
+
+            }
+            // boolean[] auxBusRep = {true, true, true, true, true};
+            // boolean[] auxRecRep = {true, true, true, true, true};
             for (int j = 0; j < 3; j++) {
                 ListaRecorridos recEleg;
                 int choiceRec, choiceBus;
                 while(true) {
                     choiceRec = rng.nextInt(5);
-                    if(auxRecorridos[choiceRec] > 0 && auxRecRep[choiceRec]) {
+                    if(auxRecorridos[choiceRec] > 0) {
                         --auxRecorridos[choiceRec];
-                        auxRecRep[choiceRec] = false;
                         break;
                     
                     }
@@ -80,9 +83,8 @@ public class EmpresaBuses {
 
                 while (true) {
                     choiceBus = rng.nextInt(5);
-                    if(auxBus[choiceBus] > 0 && auxBusRep[choiceBus]) {
+                    if(auxBus[choiceBus] > 0) {
                         --auxBus[choiceBus];
-                        auxBusRep[choiceBus] = false;
                         break;
 
                     }
@@ -154,6 +156,8 @@ public class EmpresaBuses {
             }
 
         }
+
+        System.out.println("a");
 
     }
 

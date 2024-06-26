@@ -9,4 +9,9 @@ public class Bus2Pisos extends Bus {
         
     }
 
+    
+    public int getTipoBusIndex() {
+        return ListaBuses.BUS2PISOS.getIndex();
+    }
+
 }

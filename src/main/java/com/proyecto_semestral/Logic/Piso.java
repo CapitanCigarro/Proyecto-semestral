@@ -27,6 +27,7 @@ public class Piso {
     private void crearFilasAsientos() {
         this.izquierda = new FilaAsientos();
         this.derecha = new FilaAsientos();
+        this.general = new FilaAsientos();
         FilaAsientos chosen = this.izquierda;
 
         for (int i = 1; i <= numAsientos; i++) {

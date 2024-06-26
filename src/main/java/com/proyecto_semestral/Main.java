@@ -1,7 +1,9 @@
 package com.proyecto_semestral;
 
+import com.proyecto_semestral.Graphics.MyFrame;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        MyFrame frame = new MyFrame();
     }
 }

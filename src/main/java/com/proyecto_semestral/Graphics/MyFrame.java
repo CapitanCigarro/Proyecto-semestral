@@ -11,6 +11,7 @@ public class MyFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200,800);
         this.setLocationRelativeTo(null);
+        this.setLocation(0, 0);
         this.setTitle("Reservador de asientos");
         this.setVisible(true);
         this.addMouseListener(principal);

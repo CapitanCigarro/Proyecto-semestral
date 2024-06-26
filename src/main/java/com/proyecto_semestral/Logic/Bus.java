@@ -6,12 +6,14 @@ public abstract class Bus {
     private String horaSalida, recorrido;
     private int numAsientos, numPisos;
     private ArrayList<Piso> pisos;
+    private ListaRecorridos recorridoElegido;
     
     public Bus(String horaSalida, String recorrido, int numAsientos, int numPisos) {
         this.horaSalida = horaSalida;
         this.recorrido = recorrido;
         this.numAsientos = numAsientos;
         this.numPisos = numPisos;
+        this.setRecorridoElegido(recorrido);
         crearPisos(numAsientos, numPisos);
 
     }
@@ -45,6 +47,7 @@ public abstract class Bus {
      */
 
     private void crearPisos(int numAsientos, int numPisos) {
+        this.pisos =  new ArrayList<>();
         if(numPisos == 1) {
             pisos.add(new Piso(numAsientos, 0));
 
@@ -79,5 +82,45 @@ public abstract class Bus {
 
     } 
     
+
+    private void setRecorridoElegido(String s) {
+        switch (s) {
+            case "Santiago" :
+                this.recorridoElegido = ListaRecorridos.SANTIAGO;
+                break;
+
+            case "Lota" :
+                this.recorridoElegido = ListaRecorridos.LOTA;
+                break;
+
+            case "Valparaiso" :
+                this.recorridoElegido = ListaRecorridos.VALPARAISO;
+                break;
+
+            case "Viña del mar" :
+                this.recorridoElegido = ListaRecorridos.VIÑADELMAR;
+                break;
+
+            case "Coronel" :
+                this.recorridoElegido = ListaRecorridos.CORONEL;
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
+    public int getRecorridoIndex() {
+        return this.recorridoElegido.getIndex();
+
+    }
+
+    public ListaRecorridos getRecorridoElegido() {
+        return this.recorridoElegido;
+
+    }
+
+    public abstract int getTipoBusIndex();
     
 }
