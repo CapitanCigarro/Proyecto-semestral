@@ -1,5 +1,8 @@
 package com.proyecto_semestral.Graphics;
 
+import java.awt.Color;
+
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import com.proyecto_semestral.Logic.GestorDeReservas;
@@ -16,12 +19,16 @@ public class PanelPiso extends JPanel{
         super();
         this.setSize(xSize, ySize);
         this.piso = piso;
+        this.setBackground(Color.ORANGE);
 
         this.asientosDerecha = new PanelAsientosDerecha(piso.getFilaDerecha(), g);
+        this.setLayout(null);
+        // this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         this.asientosIzquierda = new PanelAsientosIzquierda(piso.getFilaIzquierda(), g);
+        this.asientosDerecha.setLocation(Sizes.PISO.getXSize() / 2, 0);
 
-        this.add(asientosDerecha);
         this.add(asientosIzquierda);
+        this.add(asientosDerecha);
 
     }
 

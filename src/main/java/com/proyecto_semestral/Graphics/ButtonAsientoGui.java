@@ -1,5 +1,6 @@
 package com.proyecto_semestral.Graphics;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -14,9 +15,10 @@ public class ButtonAsientoGui extends JButton {
         super();
         this.asiento = asiento;
         this.g = g;
-        this.setToolTipText((String.valueOf(this.asiento.getNumAsiento())));
+        this.setText(String.valueOf(asiento.getNumAsiento()));
         this.setSize(this.xSize, this.ySize);
         this.setAction();
+        this.actualizarColor();
 
     }
 
@@ -29,19 +31,33 @@ public class ButtonAsientoGui extends JButton {
         ActionListener aL = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    g.cambiarSeleccion(asiento.getNumAsiento());  
+                g.cambiarSeleccion(asiento.getNumAsiento());
+                if (getBackground() != Color.ORANGE) {          
+                    setBackground(Color.ORANGE);
 
-                } catch (NoBusSeleccionadoException ex) {
-                    LabelMensaje.MENSAJE.setText("Seleccionar un bus antes de intentar esta accion");
+                    } else {
+                        actualizarColor();
+                    }
 
-                }
                 
 
             }
+
         };
 
         this.addActionListener(aL);
+
+    }
+
+    public void actualizarColor() {
+        if (asiento.getReservado()) {
+            this.setBackground(Color.RED);
+
+        } else {
+            this.setBackground(Color.green);
+
+        }
+
 
     }
 

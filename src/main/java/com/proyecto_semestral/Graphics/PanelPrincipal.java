@@ -29,7 +29,8 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.crearBotones();
         this.filtros = new JPanel();
         this.filtros.setBounds(0, 40, 1100, 700);
-        this.mensaje.setBounds(0, 700, 500, 100);
+        this.filtros.setLayout(null);
+        this.mensaje.setBounds(0, 700, 600, 100);
         this.mensaje.setForeground(Color.BLACK);
         this.add(mensaje);
         this.filtros.setBackground(Color.BLACK);

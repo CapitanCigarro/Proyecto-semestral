@@ -6,7 +6,10 @@ public class GestorDeReservas {
     Bus busSeleccionado;
     ArrayList<Integer> aL;
 
-    public GestorDeReservas() {}
+    public GestorDeReservas() {
+        this.aL = new ArrayList<Integer>();
+
+    }
 
     private void añadirSeleccion(int i) {
         this.aL.add(i);
@@ -26,8 +29,7 @@ public class GestorDeReservas {
 
     }
 
-    public void cambiarSeleccion(int i) throws NoBusSeleccionadoException {
-        NoBusSeleccionadoException();
+    public void cambiarSeleccion(int i){
         if(aL.contains(Integer.valueOf(i))) {
             this.añadirSeleccion(i);
 
@@ -38,16 +40,8 @@ public class GestorDeReservas {
 
     }
 
-    private void NoBusSeleccionadoException() throws NoBusSeleccionadoException {
-        if(busSeleccionado == null) {
-            throw new NoBusSeleccionadoException();
 
-        }
-
-    }
-
-    public String reservar() throws NoBusSeleccionadoException {
-        NoBusSeleccionadoException();
+    public String reservar() {
         ArrayList<Integer> reservados = new ArrayList<Integer>(), noReservados = new ArrayList<Integer>();
         while (true) {
             if (this.aL.isEmpty()) {break;}

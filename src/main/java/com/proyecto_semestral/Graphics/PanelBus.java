@@ -1,5 +1,6 @@
 package com.proyecto_semestral.Graphics;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -16,12 +17,25 @@ public class PanelBus extends JPanel {
     
     public PanelBus(Bus b, GestorDeReservas g) {
         super();
+        this.setBackground(Color.LIGHT_GRAY);
         this.setSize(xSize, ySize);
         this.bus = b;
         this.pisos = new ArrayList<PanelPiso>();
+        this.setLayout(null);
 
         for (int i = 0; i < bus.getNumPisos(); i++) {
             PanelPiso piso = new PanelPiso(this.bus.getPisos().get(i), g);
+            if(bus.getNumPisos() == 2) {
+                piso.setLocation(i * Sizes.PISO.getXSize(), 0);
+                if (i == 1) {
+                    piso.setBackground(Color.BLUE);
+
+                }
+
+            } else{
+                piso.setLocation(Sizes.PISO.getXSize() / 2, 0);
+
+            }
             this.add(piso);
             this.pisos.add(piso);
 

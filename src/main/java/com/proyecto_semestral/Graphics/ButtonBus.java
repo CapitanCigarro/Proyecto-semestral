@@ -46,6 +46,7 @@ public class ButtonBus extends JButton {
         this.panelPrincipal.cambiarMensaje("Hora = " + this.bus.getHoraSalida() + ", Recorrido = " + this.bus.getRecorrido() + ", Tipo = " + ListaBuses.values()[this.bus.getTipoBusIndex()].getNombre());
         this.panelPrincipal.estadoInicial();
         this.panelPrincipal.getFiltros().add(panelBus);
+        this.panelPrincipal.cambiarMensaje(this.bus.toString());
         
     }
     

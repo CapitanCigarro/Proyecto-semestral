@@ -122,5 +122,12 @@ public abstract class Bus {
     }
 
     public abstract int getTipoBusIndex();
+
+    @Override
+    public String toString() {
+        return "Bus : Tipo = " + ListaBuses.values()[(this.getTipoBusIndex())].getNombre() + ", Hora salida = "
+         + this.horaSalida + ", Pisos = " + String.valueOf(numPisos) + ", Asientos = " + String.valueOf(this.numAsientos) + 
+         ", Recorrido = " + this.recorrido;
+    }
     
 }
