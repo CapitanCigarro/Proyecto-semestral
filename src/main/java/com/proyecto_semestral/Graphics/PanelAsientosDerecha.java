@@ -15,17 +15,16 @@ public class PanelAsientosDerecha extends JPanel{
     public PanelAsientosDerecha(FilaAsientos fila, GestorDeReservas g) {
         super();
         this.setBackground(Color.BLUE);
-        // this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setLayout(null);
         this.filaAsientos = new FilaAsientosGui(fila, g);
 
         this.setSize(this.xSize, this.ySize);
 
-        for (int i = 0; i < filaAsientos.size() / 2 - 1; i++) {
+        for (int i = 0; i < filaAsientos.size() / 2; i++) {
             for(int j = 0; j <= 1; j++) {
                 int xSize = Sizes.ASIENTO.getXSize(), ySize =  Sizes.ASIENTO.getYSize();
-                ButtonAsientoGui asiento = filaAsientos.get((i * 2) + j);
-                asiento.setBounds((xSize * j) + 10,(ySize * i) + 10 ,xSize, ySize);
+                ButtonAsiento asiento = filaAsientos.get((i * 2) + j);
+                asiento.setBounds((xSize * j) + (20 * j) + 65, (ySize * i) + (10 * i) + 10 ,xSize, ySize);
                 asiento.setSize(xSize, ySize);
                 this.add(asiento);
 
@@ -33,11 +32,6 @@ public class PanelAsientosDerecha extends JPanel{
             
 
         }
-
-        // for(ButtonAsientoGui asiento : filaAsientos)  {
-        //     this.add(asiento);
-
-        // }
 
     }
 

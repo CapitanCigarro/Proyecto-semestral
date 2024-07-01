@@ -4,18 +4,31 @@ public class Asiento {
     private boolean reservado = false;
     private int numAsiento, piso;
 
+    /** 
+     * Objeto tipo asiento
+     * @param numAsiento Numero del asiento
+     * @param piso Piso al cual corresponde este asientop
+     */
+
     public Asiento(int numAsiento, int piso) {
         this.numAsiento = numAsiento;
         this.piso = piso;
 
     }
 
-    
+    /** 
+     * Metodo para reservar, cambia estado de reseva a true
+     */
+
     public void reservar() {
         this.reservado = true;
         System.out.println("Reservado " + String.valueOf(this.numAsiento));
 
     }
+
+    /** 
+     * Metodo para quitar reserva, cambia estado de reserva a false
+     */
 
     public void quitarReserva() {
         this.reservado = false;

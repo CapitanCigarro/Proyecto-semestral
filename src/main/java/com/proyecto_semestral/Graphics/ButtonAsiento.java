@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import com.proyecto_semestral.Logic.*;
 
-public class ButtonAsientoGui extends JButton {
+public class ButtonAsiento extends JButton {
     private GestorDeReservas g;
     private Asiento asiento;
     private int xSize = Sizes.ASIENTO.getXSize(), ySize = Sizes.ASIENTO.getYSize();
 
-    public ButtonAsientoGui(Asiento asiento, GestorDeReservas g) {
+    public ButtonAsiento(Asiento asiento, GestorDeReservas g) {
         super();
         this.asiento = asiento;
         this.g = g;
@@ -26,6 +26,10 @@ public class ButtonAsientoGui extends JButton {
         return this.asiento;
 
     }
+
+    /**
+     * Metodo privado que inicializa accion del boton, la cual pone el boton en naranja al ser seleccionado
+     */
 
     private void setAction() {
         ActionListener aL = new ActionListener() {
@@ -48,6 +52,10 @@ public class ButtonAsientoGui extends JButton {
         this.addActionListener(aL);
 
     }
+
+    /**
+     * Metodo que cambia el color del boton, Rojo si esta reservado, Verde si no
+     */
 
     public void actualizarColor() {
         if (asiento.getReservado()) {

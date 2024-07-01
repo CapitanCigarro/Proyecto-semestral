@@ -6,57 +6,35 @@ import com.proyecto_semestral.Logic.Bus;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 
 public class EmpresaBusesGui {
-    private ArrayList<ArrayList<ButtonBus>> tablaHoraria, tablaRecorrido, tablaTipoBus;
+    private ArrayList<ButtonBus> tablaBuses;
     private GestorDeReservas gestorDeReservas;
     private PanelPrincipal panelPrincipal;
 
-    public EmpresaBusesGui(ArrayList<ArrayList<Bus>> tablaHoraria, GestorDeReservas gestor, PanelPrincipal panelPrincipal) {
+    public EmpresaBusesGui(ArrayList<Bus> tablaBuses, GestorDeReservas gestor, PanelPrincipal panelPrincipal) {
         this.gestorDeReservas = gestor;
         this.panelPrincipal = panelPrincipal;
-        this.tablaHoraria = new ArrayList<ArrayList<ButtonBus>>();
-        this.tablaRecorrido = new ArrayList<ArrayList<ButtonBus>>();
-        this.tablaTipoBus = new ArrayList<ArrayList<ButtonBus>>();
+        this.tablaBuses = new ArrayList<ButtonBus>();
 
-        for (int i = 0; i < 15; i++) {
-            this.tablaHoraria.add(new ArrayList<ButtonBus>());
-            if(i < 5) {
-                this.tablaRecorrido.add(new ArrayList<ButtonBus>());
-                this.tablaTipoBus.add(new ArrayList<ButtonBus>());
-
-            }
-
-        }
-
-        this.crearBuses(tablaHoraria);
+        this.crearBuses(tablaBuses);
         
     }
 
-    private void crearBuses(ArrayList<ArrayList<Bus>> tablaHoraria) {
-        for (int i = 0; i < tablaHoraria.size(); i++) {
-            ArrayList<Bus> conjuntoBuses = tablaHoraria.get(i);
-            for (int j = 0; j < conjuntoBuses.size(); j++) {
-                Bus bus = conjuntoBuses.get(j);
-                ButtonBus buttonBus = new ButtonBus(bus, this.gestorDeReservas, this.panelPrincipal);
-                this.tablaHoraria.get(i).add(buttonBus);
-                this.tablaRecorrido.get(bus.getRecorridoIndex()).add(buttonBus);
-                this.tablaTipoBus.get(bus.getTipoBusIndex()).add(buttonBus);
+    /**
+     * Metodo privado que crea objetos ButtonBus por cada objeto Bus que existe en el programa
+     * @param tablaBuses tabla de buses existentes en el programa
+     */
 
-            }
+    private void crearBuses(ArrayList<Bus> tablaBuses) {
+        for (Bus bus : tablaBuses) {
+            ButtonBus buttonBus = new ButtonBus(bus, this.gestorDeReservas, this.panelPrincipal);
+            this.tablaBuses.add(buttonBus);
 
         }
 
     }
 
-    public ArrayList<ArrayList<ButtonBus>> getTablaHoraria() {
-        return tablaHoraria;
-    }
-
-    public ArrayList<ArrayList<ButtonBus>> getTablaRecorrido() {
-        return tablaRecorrido;
-    }
-
-    public ArrayList<ArrayList<ButtonBus>> getTablaTipoBus() {
-        return tablaTipoBus;
+    public ArrayList<ButtonBus> getTablaBuses() {
+        return tablaBuses;
     }
 
     public GestorDeReservas getGestorDeReservas() {

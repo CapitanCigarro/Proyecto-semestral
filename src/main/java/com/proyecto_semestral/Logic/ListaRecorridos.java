@@ -1,5 +1,9 @@
 package com.proyecto_semestral.Logic;
 
+/**
+ * Clase que contiene los recorridos manejados por el programa
+ */
+
 public enum ListaRecorridos {
     SANTIAGO("Santiago", 0),
     LOTA("Lota", 1),

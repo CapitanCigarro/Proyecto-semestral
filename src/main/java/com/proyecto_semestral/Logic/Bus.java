@@ -7,6 +7,14 @@ public abstract class Bus {
     private int numAsientos, numPisos;
     private ArrayList<Piso> pisos;
     private ListaRecorridos recorridoElegido;
+
+    /**
+     * Objeto tipo Bus
+     * @param horaSalida String hora a la que saldra el bus
+     * @param recorrido String recorrido que tomara el bus
+     * @param numAsientos int numero de asientos en el bus
+     * @param numPisos int numero de pisos en el bus
+     */
     
     public Bus(String horaSalida, String recorrido, int numAsientos, int numPisos) {
         this.horaSalida = horaSalida;
@@ -64,6 +72,12 @@ public abstract class Bus {
 
     }
 
+    /**
+     * Retorna objeto tipo asiento con el numero correspondiente
+     * @param numAsiento numero del asiento deseado
+     * @return asiento del numero que se entrego al metodo
+     */
+
     public Asiento getAsiento(int numAsiento) {
         --numAsiento;
         if(numPisos == 1) {
@@ -82,6 +96,10 @@ public abstract class Bus {
 
     } 
     
+    /**
+     * Metodo para inicializar variable privada recorrido elegido como una de tipo ListaRecorridos
+     * @param s Recorrido elegido en string
+     */
 
     private void setRecorridoElegido(String s) {
         switch (s) {
@@ -111,6 +129,11 @@ public abstract class Bus {
 
     }
 
+    /**
+     * Metodo que retorna el indice correspondiente en ListaRecorridos del recorrido elegido
+     * @return int Indice correspondiente
+     */
+
     public int getRecorridoIndex() {
         return this.recorridoElegido.getIndex();
 
@@ -121,6 +144,16 @@ public abstract class Bus {
 
     }
 
+    public ListaBuses getTipoBus() {
+        return ListaBuses.values()[this.getTipoBusIndex()];
+
+    }
+
+    /**
+     * Metodo abstracto que retorna indice del tipo de bus, indice corresponde a enum ListaBuses
+     * @return int indice del tipo de bus en enum ListaBuses
+     */
+
     public abstract int getTipoBusIndex();
 
     @Override
@@ -128,6 +161,19 @@ public abstract class Bus {
         return "Bus : Tipo = " + ListaBuses.values()[(this.getTipoBusIndex())].getNombre() + ", Hora salida = "
          + this.horaSalida + ", Pisos = " + String.valueOf(numPisos) + ", Asientos = " + String.valueOf(this.numAsientos) + 
          ", Recorrido = " + this.recorrido;
+    }
+
+    public ListaHoras getHora() {
+        for (ListaHoras hora : ListaHoras.values()) {
+            if (hora.getHora() == this.horaSalida) {
+                return hora;
+
+            }
+
+        }
+
+        return null;
+
     }
     
 }

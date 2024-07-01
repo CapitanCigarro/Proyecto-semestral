@@ -1,5 +1,9 @@
 package com.proyecto_semestral.Logic;
 
+/**
+ * Clase que contiene las lista de horas manejadas por el programa
+ */
+
 public enum ListaHoras {
     HORA0600("06:00", 0),
     HORA0700("07:00", 1),
@@ -35,4 +39,5 @@ public enum ListaHoras {
         return this.hora;
 
     }
+
 }

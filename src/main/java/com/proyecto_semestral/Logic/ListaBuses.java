@@ -1,5 +1,9 @@
 package com.proyecto_semestral.Logic;
 
+/**
+ * Clase que contiene los tipos de buses manejados por el codigo
+ */
+
 public enum ListaBuses {
     SALONCAMA1PISO(20, 0, "Salon Cama 1 piso"),
     SALONCAMA2PISOS(36, 1, "Salon cama 2 Pisos"), 

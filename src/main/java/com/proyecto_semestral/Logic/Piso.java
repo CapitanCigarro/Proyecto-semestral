@@ -24,6 +24,10 @@ public class Piso {
 
     }
 
+    /**
+     * Metodo privado que inicializa las filas de asientos en el piso
+     */
+
     private void crearFilasAsientos() {
         this.izquierda = new FilaAsientos();
         this.derecha = new FilaAsientos();
@@ -72,6 +76,7 @@ public class Piso {
      * @param i Numero de asiento
      * @return Asiento i + 1
      */
+    
     public Asiento getAsiento(int i) {
         return general.get(i);
 

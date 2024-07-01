@@ -22,8 +22,10 @@ public class PanelBus extends JPanel {
         this.bus = b;
         this.pisos = new ArrayList<PanelPiso>();
         this.setLayout(null);
+        System.out.println("Recorrido = " + b.getRecorrido() + ", Hora = " + b.getHoraSalida());
 
         for (int i = 0; i < bus.getNumPisos(); i++) {
+            System.out.println("Piso = " + i);
             PanelPiso piso = new PanelPiso(this.bus.getPisos().get(i), g);
             if(bus.getNumPisos() == 2) {
                 piso.setLocation(i * Sizes.PISO.getXSize(), 0);

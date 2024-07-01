@@ -42,11 +42,16 @@ public class ButtonBus extends JButton {
         return bus;
     }
 
+    /**
+     * Accion realizada al activar el boton
+     */
+
     public void accion() {
         this.panelPrincipal.cambiarMensaje("Hora = " + this.bus.getHoraSalida() + ", Recorrido = " + this.bus.getRecorrido() + ", Tipo = " + ListaBuses.values()[this.bus.getTipoBusIndex()].getNombre());
         this.panelPrincipal.estadoInicial();
         this.panelPrincipal.getFiltros().add(panelBus);
         this.panelPrincipal.cambiarMensaje(this.bus.toString());
+        this.panelPrincipal.segundoEstado();
         
     }
     

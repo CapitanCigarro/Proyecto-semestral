@@ -1,13 +1,13 @@
 package com.proyecto_semestral.Graphics;
 
 public enum Sizes {
-    ASIENTO(60, 60),
+    ASIENTO(90, 100),
     FILAASIENTOS(275, 1000),
     BUS(1100, 1000),
     MENSAJE(300, 20),
     PanelesBuses(600, 600),
     PISO(550, 1000),
-    BOTONESPANELPRINCIPAL(100, 40),
+    BOTONESPANELPRINCIPAL(140, 40),
     BUTTONBUS(200, 50);
 
     private final int xSize, ySize;

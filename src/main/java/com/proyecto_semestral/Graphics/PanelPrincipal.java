@@ -18,14 +18,18 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     private EmpresaBusesGui empresaBusesGui;
     private EmpresaBuses empresaBuses;
     private JPanel filtros;
+    @SuppressWarnings("rawtypes")
     private JComboBox filtroHora, filtroRecorrido, filtroTipoBus;
     private JLabel mensaje;
+    private String accionElegida = null;
+
 
     public PanelPrincipal() {
         super();
+        this.accionElegida = null;
         this.empresaBuses = new EmpresaBuses();
         this.mensaje = new JLabel();
-        this.empresaBusesGui = new EmpresaBusesGui(this.empresaBuses.getTablaHoraria(), this.empresaBuses.getGestorDeReservas(), this);
+        this.empresaBusesGui = new EmpresaBusesGui(this.empresaBuses.getTablaBuses(), this.empresaBuses.getGestorDeReservas(), this);
         this.crearBotones();
         this.filtros = new JPanel();
         this.filtros.setBounds(0, 40, 1100, 700);
@@ -43,12 +47,22 @@ public class PanelPrincipal extends JPanel implements MouseListener{
 
     public void estadoInicial() {
         this.mensaje.setText("Aqui se mostraran detalles de bus seleccionado");
-        this.reservar.setVisible(false);
-        this.quitarReserva.setVisible(false);
-        this.hacerAccion.setVisible(false);
-        this.reiniciar.setLocation(1080, 720);
+        this.quitarReserva.setBackground(Color.white);
+        this.reservar.setBackground(Color.white);
+        // TODO un-document this lines
+        // this.reservar.setVisible(false); 
+        // this.quitarReserva.setVisible(false);
+        // this.hacerAccion.setVisible(false);
+
         this.filtros.removeAll();
         this.repaint();
+
+    }
+
+    public void segundoEstado() {
+        reservar.setVisible(true);
+        this.quitarReserva.setVisible(true);
+        this.hacerAccion.setVisible(true);
 
     }
 
@@ -57,30 +71,48 @@ public class PanelPrincipal extends JPanel implements MouseListener{
 
     }
 
-    public void hacerAccion() {
+    public void hacerAccion() throws NoAccionElegidaException {
+        if (this.accionElegida == null) {
+            throw new NoAccionElegidaException("No se eligio accion");
 
+        }
+
+        if (accionElegida == "reservar") {
+            this.empresaBuses.getGestorDeReservas().reservar();
+
+        } else {
+            this.empresaBuses.getGestorDeReservas().quitarReservas();
+
+        }
+
+        this.repaint();
 
     }
 
     public void reservar() {
-
+        this.accionElegida = "reservar";
+        this.reservar.setBackground(Color.green);
+        this.quitarReserva.setBackground(Color.WHITE);
 
     }
 
     public void quitarReserva() {
-
+        this.accionElegida = "quitarReserva";
+        this.reservar.setBackground(Color.white);
+        this.quitarReserva.setBackground(Color.green);
 
     }
 
     public void buscar() {
         this.estadoInicial();
         int loop = 0;
-        for (ButtonBus bus : empresaBusesGui.getTablaHoraria().get(this.filtroHora.getSelectedIndex())) {
-            boolean condRecorrido = bus.getBus().getRecorridoElegido() == this.filtroRecorrido.getSelectedItem() || this.filtroRecorrido.getSelectedItem() == null;
-            boolean condTipoBus = bus.getBus().getTipoBusIndex() == this.filtroTipoBus.getSelectedIndex() || this.filtroTipoBus.getSelectedItem() == null;
+        for (ButtonBus bus : empresaBusesGui.getTablaBuses()) {
+            boolean condHora = bus.getBus().getHora() == filtroHora.getSelectedItem() || filtroHora.getSelectedItem() == "Ignorar";
+            boolean condRecorrido = bus.getBus().getRecorridoElegido() == this.filtroRecorrido.getSelectedItem() || this.filtroRecorrido.getSelectedItem() == "Ignorar";
+            boolean condTipoBus = bus.getBus().getTipoBusIndex() == this.filtroTipoBus.getSelectedIndex() || this.filtroTipoBus.getSelectedItem() == "Ignorar";
             
-            if (condRecorrido && condTipoBus) {
-                bus.setLocation(Sizes.BUTTONBUS.getXSize() * loop + 10, 0);
+            if (condRecorrido && condTipoBus && condHora) {
+                bus.setLocation(Sizes.BUTTONBUS.getXSize() * (loop % 5) + 10, (loop / 5) * Sizes.BUTTONBUS.getYSize() + 10);
                 ++loop;
                 this.filtros.add(bus);
 
@@ -92,6 +124,7 @@ public class PanelPrincipal extends JPanel implements MouseListener{
 
     }
 
+    @SuppressWarnings("unchecked")
     private void crearBotones() {
         this.reiniciar = new JButton();
         this.hacerAccion = new JButton();
@@ -111,7 +144,13 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         ActionListener hacerAccionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                hacerAccion();
+                try {
+                    hacerAccion();
+                
+                } catch (NoAccionElegidaException exception) {
+                    mensaje.setText("Seleccionar accion");
+
+                }
 
             }
             
@@ -156,6 +195,14 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.quitarReserva.setSize(Sizes.BOTONESPANELPRINCIPAL.getXSize(), Sizes.BOTONESPANELPRINCIPAL.getYSize());
         
         this.reiniciar.setText("Reiniciar");
+        this.hacerAccion.setText("Realizar accion");
+        this.reservar.setText("Reservar");
+        this.quitarReserva.setText("Quitar reservas");
+
+        this.reiniciar.setLocation(1040, 720);
+        this.quitarReserva.setLocation(590, 720);
+        this.reservar.setLocation(740, 720);
+        this.hacerAccion.setLocation(890, 720);
 
         this.add(hacerAccion);
         this.add(reiniciar);
@@ -165,8 +212,9 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.filtroHora = new JComboBox<>(ListaHoras.values());
         this.filtroRecorrido = new JComboBox<>(ListaRecorridos.values());
         this.filtroTipoBus = new JComboBox<>(ListaBuses.values());
-        this.filtroRecorrido.addItem(null);
-        this.filtroTipoBus.addItem(null);
+        this.filtroRecorrido.addItem("Ignorar");
+        this.filtroTipoBus.addItem("Ignorar");
+        this.filtroHora.addItem("Ignorar");
 
         this.filtroHora.setBounds(300, 0, 100, 20);
         this.filtroRecorrido.setBounds(410, 0, 100, 20);
