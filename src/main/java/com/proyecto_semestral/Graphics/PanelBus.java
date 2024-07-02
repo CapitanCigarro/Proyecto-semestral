@@ -17,7 +17,7 @@ public class PanelBus extends JPanel implements ActualizarColoresAsientos {
     
     public PanelBus(Bus b, GestorDeReservas g) {
         super();
-        this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(Color.BLACK);
         this.setSize(xSize, ySize);
         this.bus = b;
         this.pisos = new ArrayList<PanelPiso>();

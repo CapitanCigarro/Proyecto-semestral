@@ -8,9 +8,9 @@ import com.proyecto_semestral.Logic.GestorDeReservas;
 import com.proyecto_semestral.Logic.Piso;
 
 public class PanelPiso extends JPanel implements ActualizarColoresAsientos {
-    Piso piso;
-    PanelAsientosDerecha asientosDerecha;
-    PanelAsientosIzquierda asientosIzquierda;
+    private Piso piso;
+    private PanelAsientosDerecha asientosDerecha;
+    private PanelAsientosIzquierda asientosIzquierda;
     private int xSize = Sizes.PISO.getXSize();
     private int ySize = Sizes.PISO.getYSize();
 
@@ -18,7 +18,6 @@ public class PanelPiso extends JPanel implements ActualizarColoresAsientos {
         super();
         this.setSize(xSize, ySize);
         this.piso = piso;
-        this.setBackground(Color.ORANGE);
 
         this.asientosDerecha = new PanelAsientosDerecha(piso.getFilaDerecha(), g);
         this.setLayout(null);
@@ -29,6 +28,14 @@ public class PanelPiso extends JPanel implements ActualizarColoresAsientos {
         this.add(asientosDerecha);
 
         System.out.println(asientosDerecha.getFilaAsientos().size() + ", " + asientosIzquierda.getFilaAsientos().size());
+
+        if (piso.getnumPiso() == 1) {
+            this.setColor(Color.DARK_GRAY);
+
+        } else {
+            this.setColor(Color.LIGHT_GRAY);
+
+        }
 
     }
 
@@ -51,6 +58,12 @@ public class PanelPiso extends JPanel implements ActualizarColoresAsientos {
     public void actualizarColoresAsientos() {
         this.asientosDerecha.actualizarColoresAsientos();
         this.asientosIzquierda.actualizarColoresAsientos();
+
+    }
+
+    private void setColor(Color color) {
+        this.asientosDerecha.setColor(color);
+        this.asientosIzquierda.setColor(color);
 
     }
     

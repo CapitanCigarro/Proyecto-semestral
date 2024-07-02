@@ -76,7 +76,7 @@ public class Piso {
      * @param i Numero de asiento
      * @return Asiento i + 1
      */
-    
+
     public Asiento getAsiento(int i) {
         return general.get(i);
 

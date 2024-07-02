@@ -1,5 +1,6 @@
 package com.proyecto_semestral.Graphics;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,6 +22,8 @@ public class ButtonBus extends JButton {
         this.panelBus = new PanelBus(bus, g);
         this.setText(this.bus.getRecorrido());
         this.setSize(Sizes.BUTTONBUS.getXSize(), Sizes.BUTTONBUS.getYSize());
+        this.setBackground(Color.DARK_GRAY);
+        this.setForeground(Color.white);
 
         ActionListener actionListener = new ActionListener() {
             @Override

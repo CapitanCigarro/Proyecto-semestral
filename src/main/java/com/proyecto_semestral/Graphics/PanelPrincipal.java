@@ -27,6 +27,7 @@ public class PanelPrincipal extends JPanel implements MouseListener{
 
     public PanelPrincipal() {
         super();
+        this.setBackground(Color.BLACK);
         this.accionElegida = null;
         this.empresaBuses = new EmpresaBuses();
         this.mensaje = new JLabel();
@@ -36,7 +37,8 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.filtros.setBounds(0, 40, 1100, 700);
         this.filtros.setLayout(null);
         this.mensaje.setBounds(0, 700, 600, 100);
-        this.mensaje.setForeground(Color.BLACK);
+        this.mensaje.setForeground(Color.WHITE);
+        this.mensaje.setBackground(Color.BLACK);
         this.add(mensaje);
         this.filtros.setBackground(Color.BLACK);
         this.add(filtros);

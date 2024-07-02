@@ -15,7 +15,6 @@ public class PanelAsientosIzquierda extends JPanel implements ActualizarColoresA
 
     public PanelAsientosIzquierda(FilaAsientos fila, GestorDeReservas g) {
         super();
-        this.setBackground(Color.MAGENTA);
         this.setLayout(null);
         this.filaAsientos = new FilaAsientosGui(fila, g);
 
@@ -40,13 +39,18 @@ public class PanelAsientosIzquierda extends JPanel implements ActualizarColoresA
         return this.filaAsientos;
 
     }
-    
+
     @Override
     public void actualizarColoresAsientos() {
         for(ButtonAsiento asiento : this.filaAsientos) {
             asiento.actualizarColor();
 
         }
+
+    }
+
+    public void setColor (Color color) {
+        this.setBackground(color);
 
     }
 
