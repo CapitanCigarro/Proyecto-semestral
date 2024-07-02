@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import com.proyecto_semestral.Logic.Bus;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 
-public class PanelBus extends JPanel {
+public class PanelBus extends JPanel implements ActualizarColoresAsientos {
     private int xSize = Sizes.BUS.getXSize();
     private int ySize = Sizes.BUS.getYSize();
 
@@ -53,6 +53,16 @@ public class PanelBus extends JPanel {
         return pisos;
     }
 
-    
+    /**
+     * Metodo para actualizar colores de asientos
+     */
+
+    public void actualizarColoresAsientos() {
+        for (PanelPiso piso : pisos) {
+            piso.actualizarColoresAsientos();
+
+        }
+
+    }
 
 }

@@ -54,10 +54,15 @@ public class GestorDeReservas {
 
     public void cambiarSeleccion(int i){
         if(aL.contains(Integer.valueOf(i))) {
-            this.añadirSeleccion(i);
+            this.quitarSeleccion(i);
 
         } else {
-            this.quitarSeleccion(i);
+            this.añadirSeleccion(i);
+
+        }
+
+        for (Integer num : this.aL)  {
+            System.out.println(num);
 
         }
 
@@ -69,13 +74,19 @@ public class GestorDeReservas {
      */
 
     public String reservar() {
+
+        if (this.aL.isEmpty()) {
+            return "Seleccionar asientos antes de intentar accion";
+
+        }
+
         ArrayList<Integer> reservados = new ArrayList<Integer>(), noReservados = new ArrayList<Integer>();
         while (true) {
             if (this.aL.isEmpty()) {break;}
             Integer asientoSeleccionado = aL.remove(0);
             Asiento as = busSeleccionado.getAsiento(asientoSeleccionado);
             
-            if (as.getReservado()) {
+            if (as.getReservado() == false) {
                 reservados.add(asientoSeleccionado);
                 as.reservar();
 
@@ -156,7 +167,13 @@ public class GestorDeReservas {
      * @return String mensaje de cuantos asientos se les quito la reserva y cuantos no tenian
      */
 
-    public String quitarReservas() {
+    public String quitarReservas() {   
+
+        if (this.aL.isEmpty()) {
+            return "Seleccionar asientos antes de intentar accion";
+
+        }
+
         String mensaje, pt1 = null, pt2 = null;
 
         ArrayList<Integer> reservaQuitada = new ArrayList<Integer>(), sinReservaInicial = new ArrayList<Integer>();
@@ -187,7 +204,7 @@ public class GestorDeReservas {
             }
 
             if (reservaQuitada.size() == 1) {
-                pt1 += String.valueOf(reservaQuitada.remove(0));
+                pt1 += ", " + String.valueOf(reservaQuitada.remove(0));
 
             }
 

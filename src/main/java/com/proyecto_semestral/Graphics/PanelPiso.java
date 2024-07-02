@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 import com.proyecto_semestral.Logic.Piso;
 
-public class PanelPiso extends JPanel{
+public class PanelPiso extends JPanel implements ActualizarColoresAsientos {
     Piso piso;
     PanelAsientosDerecha asientosDerecha;
     PanelAsientosIzquierda asientosIzquierda;
@@ -42,6 +42,16 @@ public class PanelPiso extends JPanel{
 
     public PanelAsientosIzquierda getAsientosIzquierda() {
         return asientosIzquierda;
+    }
+
+    /**
+     * Metodo para actualizar colores de asientos
+     */
+
+    public void actualizarColoresAsientos() {
+        this.asientosDerecha.actualizarColoresAsientos();
+        this.asientosIzquierda.actualizarColoresAsientos();
+
     }
     
 }

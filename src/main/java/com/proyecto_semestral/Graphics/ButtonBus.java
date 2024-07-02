@@ -51,7 +51,8 @@ public class ButtonBus extends JButton {
         this.panelPrincipal.estadoInicial();
         this.panelPrincipal.getFiltros().add(panelBus);
         this.panelPrincipal.cambiarMensaje(this.bus.toString());
-        this.panelPrincipal.segundoEstado();
+        this.panelPrincipal.segundoEstado(this);
+        this.panelPrincipal.getEmpresaBuses().getGestorDeReservas().setBusSeleccionado(bus);
         
     }
     

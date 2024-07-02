@@ -21,7 +21,8 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     @SuppressWarnings("rawtypes")
     private JComboBox filtroHora, filtroRecorrido, filtroTipoBus;
     private JLabel mensaje;
-    private String accionElegida = null;
+    private String accionElegida;
+    private ButtonBus busElegido;
 
 
     public PanelPrincipal() {
@@ -49,6 +50,9 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.mensaje.setText("Aqui se mostraran detalles de bus seleccionado");
         this.quitarReserva.setBackground(Color.white);
         this.reservar.setBackground(Color.white);
+        this.busElegido = null;
+        this.accionElegida = null;
+        this.empresaBuses.getGestorDeReservas().quitarReservas();
         // TODO un-document this lines
         // this.reservar.setVisible(false); 
         // this.quitarReserva.setVisible(false);
@@ -59,10 +63,11 @@ public class PanelPrincipal extends JPanel implements MouseListener{
 
     }
 
-    public void segundoEstado() {
+    public void segundoEstado(ButtonBus bus) {
         reservar.setVisible(true);
         this.quitarReserva.setVisible(true);
         this.hacerAccion.setVisible(true);
+        this.busElegido = bus;
 
     }
 
@@ -78,28 +83,45 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         }
 
         if (accionElegida == "reservar") {
-            this.empresaBuses.getGestorDeReservas().reservar();
+            this.cambiarMensaje(this.empresaBuses.getGestorDeReservas().reservar());
 
         } else {
-            this.empresaBuses.getGestorDeReservas().quitarReservas();
+            this.cambiarMensaje(this.empresaBuses.getGestorDeReservas().quitarReservas());
 
         }
+
+        this.busElegido.getPanelBus().actualizarColoresAsientos();
+
+        this.empresaBuses.getGestorDeReservas().limpiarSelecciones();
 
         this.repaint();
 
     }
 
     public void reservar() {
-        this.accionElegida = "reservar";
-        this.reservar.setBackground(Color.green);
-        this.quitarReserva.setBackground(Color.WHITE);
+        if (this.accionElegida == "reservar") {
+            this.accionElegida = null;
+            this.reservar.setBackground(Color.white);
+
+        } else{ 
+            this.accionElegida = "reservar";
+            this.reservar.setBackground(Color.green);
+            this.quitarReserva.setBackground(Color.WHITE);
+
+        }
 
     }
 
     public void quitarReserva() {
-        this.accionElegida = "quitarReserva";
-        this.reservar.setBackground(Color.white);
-        this.quitarReserva.setBackground(Color.green);
+        if (this.accionElegida == "quitarReserva") {
+            this.accionElegida = null;
+            this.quitarReserva.setBackground(Color.white);
+
+        } else {
+            this.accionElegida = "quitarReserva";
+            this.reservar.setBackground(Color.white);
+            this.quitarReserva.setBackground(Color.green);
+        }
 
     }
 
@@ -231,6 +253,10 @@ public class PanelPrincipal extends JPanel implements MouseListener{
 
     public JPanel getFiltros() {
         return filtros;
+    }
+
+    public EmpresaBuses getEmpresaBuses() {
+        return empresaBuses;
     }
 
     public void paintComponents(Graphics g) {
