@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import com.proyecto_semestral.Logic.Asiento;
 import com.proyecto_semestral.Logic.EmpresaBuses;
+import com.proyecto_semestral.Logic.GestorDeReservas;
 import com.proyecto_semestral.Logic.ListaBuses;
 import com.proyecto_semestral.Logic.ListaHoras;
 import com.proyecto_semestral.Logic.ListaRecorridos;
@@ -32,15 +33,20 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.accionElegida = null;
         this.empresaBuses = new EmpresaBuses();
         this.mensaje1 = new JLabel();
+        this.mensaje2 = new JLabel();
         this.empresaBusesGui = new EmpresaBusesGui(this.empresaBuses.getTablaBuses(), this.empresaBuses.getGestorDeReservas(), this);
         this.crearBotones();
         this.filtros = new JPanel();
         this.filtros.setBounds(0, 40, 1100, 700);
         this.filtros.setLayout(null);
         this.mensaje1.setBounds(0, 700, 800, 100);
+        this.mensaje2.setBounds(1120, -300, 400, 400);
         this.mensaje1.setForeground(Color.WHITE);
         this.mensaje1.setBackground(Color.BLACK);
+        this.mensaje2.setBackground(Color.DARK_GRAY);
+        this.mensaje2.setForeground(Color.white);
         this.add(mensaje1);
+        this.add(mensaje2);
         this.filtros.setBackground(Color.BLACK);
         this.add(filtros);
         this.setLayout(null);
@@ -105,11 +111,13 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         if (this.accionElegida == "reservar") {
             this.accionElegida = null;
             this.reservar.setBackground(Color.white);
+            this.cambiarMensaje2();
 
         } else{ 
             this.accionElegida = "reservar";
             this.reservar.setBackground(Color.green);
             this.quitarReserva.setBackground(Color.WHITE);
+            this.cambiarMensaje2();
 
         }
 
@@ -218,7 +226,7 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.hacerAccion.setSize(Sizes.BOTONESPANELPRINCIPAL.getXSize(), Sizes.BOTONESPANELPRINCIPAL.getYSize());
         this.reservar.setSize(Sizes.BOTONESPANELPRINCIPAL.getXSize(), Sizes.BOTONESPANELPRINCIPAL.getYSize());
         this.quitarReserva.setSize(Sizes.BOTONESPANELPRINCIPAL.getXSize(), Sizes.BOTONESPANELPRINCIPAL.getYSize());
-        
+
         this.reiniciar.setText("Reiniciar");
         this.hacerAccion.setText("Realizar accion");
         this.reservar.setText("Reservar");
@@ -228,6 +236,7 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.quitarReserva.setLocation(990, 720);
         this.reservar.setLocation(1140, 720);
         this.hacerAccion.setLocation(1290, 720);
+        this.mensaje2.setLocation(1300, 20);
 
         this.add(hacerAccion);
         this.add(reiniciar);
@@ -268,15 +277,24 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     }
 
     public void cambiarMensaje2() {
-        String mensaje = "Asientos seleccionados = " +  this.empresaBuses.getGestorDeReservas().toString();
-        if (this.reservar.getBackground() == Color.green) {
-            mensaje += "\n" + String.valueOf(this.empresaBuses.getGestorDeReservas().getCostoTotal());
+        GestorDeReservas gestor = this.empresaBuses.getGestorDeReservas();
+        String mensaje = "Asientos seleccionados = " +  gestor.toString();
+        if (this.reservar.getBackground() == Color.GREEN) {
+            if(gestor.getBusSeleccionado().getTipoBus() == ListaBuses.SalonCamaYSemiCama) {
+                JLabel a1 = new JLabel("Costo salon cama      = " + String.valueOf(gestor.getBusSeleccionado().getAsiento(1).getPrecio()));
+                JLabel a2 = new JLabel("Costo semi salon cama = " + String.valueOf(gestor.getBusSeleccionado().getAsiento(30).getPrecio()));
+                a1.setBounds();
+
+            } else {
+                mensaje += "\nCosto asiento = " + String.valueOf(gestor.getBusSeleccionado().getAsiento(1).getPrecio());
+
+            }
+
+            mensaje += "\nCosto Total = " + String.valueOf(gestor.getCostoTotal());
 
         }
 
-        this.mensaje2.setText(mensaje);
-
-        // TODO mostrar precios
+        this.mensaje2.setText("<html>" + mensaje + "</html>");
 
     }
 

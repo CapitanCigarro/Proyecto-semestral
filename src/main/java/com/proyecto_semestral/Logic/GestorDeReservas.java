@@ -252,7 +252,7 @@ public class GestorDeReservas {
     @Override
     public String toString() {
         String mensaje = "{";
-        for(int i = 0; 0 < this.aL.size(); i++) {
+        for(int i = 0; i < this.aL.size(); i++) {
             if (i == 0) {
                 mensaje += String.valueOf(aL.get(i));
 
@@ -266,7 +266,11 @@ public class GestorDeReservas {
         mensaje += "}";
 
         return mensaje;       
-         
+
+    }
+
+    public Bus getBusSeleccionado() {
+        return busSeleccionado;
     }
 
 }

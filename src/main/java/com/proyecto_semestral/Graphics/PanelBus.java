@@ -16,7 +16,7 @@ public class PanelBus extends JPanel implements ActualizarColoresAsientos {
     private ArrayList<PanelPiso> pisos;
     private ButtonBus buttonBus;
 
-    public PanelBus(Bus b, GestorDeReservas g, ButtonBus buttonBus) {
+    public PanelBus(Bus b, GestorDeReservas g, ButtonBus buttonBus, PanelPrincipal panelPrincipal) {
         super();
         this.setBackground(Color.BLACK);
         this.setSize(xSize, ySize);
@@ -28,7 +28,7 @@ public class PanelBus extends JPanel implements ActualizarColoresAsientos {
 
         for (int i = 0; i < bus.getNumPisos(); i++) {
             System.out.println("Piso = " + i);
-            PanelPiso piso = new PanelPiso(this.bus.getPisos().get(i), g);
+            PanelPiso piso = new PanelPiso(this.bus.getPisos().get(i), g, panelPrincipal);
             if(bus.getNumPisos() == 2) {
                 piso.setLocation(i * Sizes.PISO.getXSize(), 0);
                 if (i == 1) {

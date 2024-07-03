@@ -12,7 +12,7 @@ public class ButtonAsiento extends JButton {
     private int xSize = Sizes.ASIENTO.getXSize(), ySize = Sizes.ASIENTO.getYSize();
     private PanelPrincipal panelPrincipal;
 
-    public ButtonAsiento(Asiento asiento, GestorDeReservas g) {
+    public ButtonAsiento(Asiento asiento, GestorDeReservas g, PanelPrincipal panelPrincipal) {
         super();
         this.asiento = asiento;
         this.g = g;
@@ -24,7 +24,7 @@ public class ButtonAsiento extends JButton {
         this.setSize(this.xSize, this.ySize);
         this.setAction();
         this.actualizarColor();
-        this.panelPrincipal = ((PanelBus)(((PanelPiso)(((PanelAsientos)this.getParent()).getParent()).getParent())).getParent()).getButtonBus().getPanelPrincipal();
+        this.panelPrincipal = panelPrincipal;
 
     }
 

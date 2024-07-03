@@ -16,7 +16,7 @@ public class PanelPiso extends JLayeredPane implements ActualizarColoresAsientos
     private int ySize = Sizes.PISO.getYSize();
     private JLabel numPiso;
 
-    public PanelPiso(Piso piso, GestorDeReservas g) {
+    public PanelPiso(Piso piso, GestorDeReservas g, PanelPrincipal panelPrincipal) {
         super();
         this.setSize(xSize, ySize);
         this.piso = piso;
@@ -29,9 +29,9 @@ public class PanelPiso extends JLayeredPane implements ActualizarColoresAsientos
         this.numPiso.setBackground(Color.BLACK);
         this.numPiso.setForeground(Color.WHITE);
 
-        this.asientosDerecha = new PanelAsientosDerecha(piso.getFilaDerecha(), g);
+        this.asientosDerecha = new PanelAsientosDerecha(piso.getFilaDerecha(), g, panelPrincipal);
         this.setLayout(null);
-        this.asientosIzquierda = new PanelAsientosIzquierda(piso.getFilaIzquierda(), g);
+        this.asientosIzquierda = new PanelAsientosIzquierda(piso.getFilaIzquierda(), g, panelPrincipal);
         this.asientosDerecha.setLocation(Sizes.PISO.getXSize() / 2, 0);    
 
         if (piso.getnumPiso() == 1) {

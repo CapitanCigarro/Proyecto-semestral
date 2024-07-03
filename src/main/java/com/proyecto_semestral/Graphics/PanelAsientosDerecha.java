@@ -11,10 +11,10 @@ public class PanelAsientosDerecha extends PanelAsientos implements ActualizarCol
     private int xSize = Sizes.FILAASIENTOS.getXSize();
     private int ySize = Sizes.FILAASIENTOS.getYSize();
 
-    public PanelAsientosDerecha(FilaAsientos fila, GestorDeReservas g) {
+    public PanelAsientosDerecha(FilaAsientos fila, GestorDeReservas g, PanelPrincipal panelPrincipal) {
         super();
         this.setLayout(null);
-        this.filaAsientos = new FilaAsientosGui(fila, g);
+        this.filaAsientos = new FilaAsientosGui(fila, g, panelPrincipal);
 
         this.setSize(this.xSize, this.ySize);
 

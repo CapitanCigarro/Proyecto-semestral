@@ -2,7 +2,6 @@ package com.proyecto_semestral.Graphics;
 
 import java.awt.Color;
 
-import javax.swing.JPanel;
 
 import com.proyecto_semestral.Logic.FilaAsientos;
 import com.proyecto_semestral.Logic.GestorDeReservas;
@@ -13,10 +12,10 @@ public class PanelAsientosIzquierda extends PanelAsientos implements ActualizarC
     private int xSize = Sizes.FILAASIENTOS.getXSize();
     private int ySize = Sizes.FILAASIENTOS.getYSize();
 
-    public PanelAsientosIzquierda(FilaAsientos fila, GestorDeReservas g) {
+    public PanelAsientosIzquierda(FilaAsientos fila, GestorDeReservas g, PanelPrincipal panelPrincipal) {
         super();
         this.setLayout(null);
-        this.filaAsientos = new FilaAsientosGui(fila, g);
+        this.filaAsientos = new FilaAsientosGui(fila, g, panelPrincipal);
 
         this.setSize(this.xSize, this.ySize);
 

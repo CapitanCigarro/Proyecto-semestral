@@ -86,11 +86,11 @@ public abstract class Bus {
             return pisos.get(0).getAsiento(numAsiento);
 
         } else {
-            if(numAsiento < this.numAsientos[0] / 2) {
+            if(numAsiento < this.numAsientos[0]) {
                 return pisos.get(0).getAsiento(numAsiento);
 
             } else {
-                return pisos.get(1).getAsiento(numAsiento - (numAsientos[0] + numAsientos[1]) / 2);
+                return pisos.get(1).getAsiento(numAsiento - numAsientos[0]);
 
             }
 
