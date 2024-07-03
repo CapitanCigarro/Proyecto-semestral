@@ -4,13 +4,13 @@ public class BusSalonCamaYSemiCama extends Bus{
     public static int cantidad = 0;
 
     public BusSalonCamaYSemiCama(String horaSalida, String recorrido) {
-        super(horaSalida, recorrido, ListaBuses.SalonCamaYSemiCama.getNumAsientos(), 2);
+        super(horaSalida, recorrido, EnumBuses.SalonCamaYSemiCama.getNumAsientos(), 2);
         ++cantidad;
 
     }
     
     public int getTipoBusIndex() {
-        return ListaBuses.SalonCamaYSemiCama.getIndex();
+        return EnumBuses.SalonCamaYSemiCama.getIndex();
     }
 
 }

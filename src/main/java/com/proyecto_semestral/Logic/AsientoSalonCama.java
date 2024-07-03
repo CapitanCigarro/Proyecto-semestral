@@ -5,7 +5,7 @@ public class AsientoSalonCama extends Asiento{
 
     public AsientoSalonCama(int numAsiento, int piso, double precio) {
         super(numAsiento, piso);
-        this.precio = precio * ListaBuses.SalonCamaYSemiCama.getModificador2do();
+        this.precio = precio * EnumBuses.SalonCamaYSemiCama.getModificador2do();
 
     }
 

@@ -22,7 +22,6 @@ public abstract class Asiento {
 
     public void reservar() {
         this.reservado = true;
-        System.out.println("Reservado " + String.valueOf(this.numAsiento));
 
     }
 

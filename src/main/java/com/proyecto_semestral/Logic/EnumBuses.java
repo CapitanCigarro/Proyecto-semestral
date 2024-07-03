@@ -4,7 +4,7 @@ package com.proyecto_semestral.Logic;
  * Clase que contiene los tipos de buses manejados por el codigo
  */
 
-public enum ListaBuses {
+public enum EnumBuses {
     SalonCamaYSemiCama(16, 20, 0, "Salon Cama / Semi Salon Cama", 1.3, 1.5), 
     MICROBUS(20, 0, 1, "Microbus", 0.8, 0.8),  
     BUSNORMAL(24, 0, 2, "Bus", 1, 1);
@@ -16,7 +16,7 @@ public enum ListaBuses {
     private final double modificador; 
     private final double modificador2do;
 
-    ListaBuses(int asientos1erPiso, int asientos2doPiso, int index, String nombre, double modificador, double modificador2do) {
+    EnumBuses(int asientos1erPiso, int asientos2doPiso, int index, String nombre, double modificador, double modificador2do) {
         this.asientos1erPiso = asientos1erPiso;
         this.asientos2doPiso = asientos2doPiso;
         this.nombre = nombre;

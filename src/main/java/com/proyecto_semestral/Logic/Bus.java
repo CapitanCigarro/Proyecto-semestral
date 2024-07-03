@@ -7,7 +7,7 @@ public abstract class Bus {
     private int[] numAsientos; 
     private int numPisos;
     private ArrayList<Piso> pisos;
-    private ListaRecorridos recorridoElegido;
+    private EnumRecorridos recorridoElegido;
     private double precio;
 
     /**
@@ -106,23 +106,23 @@ public abstract class Bus {
     private void setRecorridoElegido(String s) {
         switch (s) {
             case "Santiago" :
-                this.recorridoElegido = ListaRecorridos.SANTIAGO;
+                this.recorridoElegido = EnumRecorridos.SANTIAGO;
                 break;
 
             case "Iquique" :
-                this.recorridoElegido = ListaRecorridos.IQUIQUE;
+                this.recorridoElegido = EnumRecorridos.IQUIQUE;
                 break;
 
             case "Valparaiso" :
-                this.recorridoElegido = ListaRecorridos.VALPARAISO;
+                this.recorridoElegido = EnumRecorridos.VALPARAISO;
                 break;
 
             case "Viña del mar" :
-                this.recorridoElegido = ListaRecorridos.VIÑADELMAR;
+                this.recorridoElegido = EnumRecorridos.VIÑADELMAR;
                 break;
 
             case "Puerto Montt" :
-                this.recorridoElegido = ListaRecorridos.PUERTOMONTT;
+                this.recorridoElegido = EnumRecorridos.PUERTOMONTT;
                 break;
 
             default:
@@ -141,13 +141,13 @@ public abstract class Bus {
 
     }
 
-    public ListaRecorridos getRecorridoElegido() {
+    public EnumRecorridos getRecorridoElegido() {
         return this.recorridoElegido;
 
     }
 
-    public ListaBuses getTipoBus() {
-        return ListaBuses.values()[this.getTipoBusIndex()];
+    public EnumBuses getTipoBus() {
+        return EnumBuses.values()[this.getTipoBusIndex()];
 
     }
 
@@ -160,13 +160,13 @@ public abstract class Bus {
 
     @Override
     public String toString() {
-        return "Bus : Tipo = " + ListaBuses.values()[(this.getTipoBusIndex())].getNombre() + ", Hora salida = "
+        return "Bus : Tipo = " + EnumBuses.values()[(this.getTipoBusIndex())].getNombre() + ", Hora salida = "
          + this.horaSalida + ", Pisos = " + String.valueOf(numPisos) + ", Asientos = " + String.valueOf(this.numAsientos[0] + this.numAsientos[1]) + 
          ", Recorrido = " + this.recorrido;
     }
 
-    public ListaHoras getHora() {
-        for (ListaHoras hora : ListaHoras.values()) {
+    public EnumHoras getHora() {
+        for (EnumHoras hora : EnumHoras.values()) {
             if (hora.getHora() == this.horaSalida) {
                 return hora;
 

@@ -5,7 +5,7 @@ public class AsientoNormal extends Asiento{
 
     public AsientoNormal(int numAsiento, int piso, double precio) {
         super(numAsiento, piso);
-        this.precio = precio * ListaBuses.BUSNORMAL.getModificador();
+        this.precio = precio * EnumBuses.BUSNORMAL.getModificador();
 
     }
 

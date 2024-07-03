@@ -6,6 +6,7 @@ public class GestorDeReservas {
     private Bus busSeleccionado;
     private ArrayList<Integer> aL;
     private double costoTotal;
+    private double modificador;
 
     /**
      * Clase que tiene la funcion de gestionar las reservas
@@ -78,6 +79,8 @@ public class GestorDeReservas {
             return "Seleccionar asientos antes de intentar accion";
 
         }
+
+        this.costoTotal = 0;
 
         ArrayList<Integer> reservados = new ArrayList<Integer>(), noReservados = new ArrayList<Integer>();
         while (true) {
@@ -246,7 +249,7 @@ public class GestorDeReservas {
     }
 
     public double getCostoTotal() {
-        return costoTotal;
+        return costoTotal * this.modificador;
     }
 
     @Override
@@ -271,6 +274,22 @@ public class GestorDeReservas {
 
     public Bus getBusSeleccionado() {
         return busSeleccionado;
+    }
+
+    public void setModificador(String s) {
+        double modificador;
+        try {
+            modificador = EnumTipoPasaje.Normal.getModificador(s);
+        } catch (TipoPasajeIncorrectoException e) {
+            // Por  como esta escrito el codigo la excepcion no puede ser lanzada.
+            // Para que no tire error al compilar:
+            modificador = 1;
+        }
+        this.modificador = modificador;
+    }
+
+    public double getModificador() {
+        return modificador;
     }
 
 }

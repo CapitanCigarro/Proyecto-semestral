@@ -14,8 +14,6 @@ public class MyFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Reservador de asientos");
         this.setVisible(true);
-        this.addMouseListener(principal);
-
         this.add(principal);
 
     }

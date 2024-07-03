@@ -4,7 +4,7 @@ package com.proyecto_semestral.Logic;
  * Clase que contiene los recorridos manejados por el programa
  */
 
-public enum ListaRecorridos {
+public enum EnumRecorridos {
     SANTIAGO("Santiago", 0, 10500),
     IQUIQUE("Iquique", 1, 30000),
     VALPARAISO("Valparaiso", 2, 14000),
@@ -17,7 +17,7 @@ public enum ListaRecorridos {
     private final int index;
     private final double precio;
 
-    ListaRecorridos(String recorrido, int index, double precio) {
+    EnumRecorridos(String recorrido, int index, double precio) {
         this.index = index;
         this.recorrido = recorrido;
         this.precio = precio;

@@ -16,10 +16,6 @@ public class ButtonAsiento extends JButton {
         super();
         this.asiento = asiento;
         this.g = g;
-        if (asiento == null) {
-            System.out.println("a");
-
-        }
         this.setText(String.valueOf(asiento.getNumAsiento()));
         this.setSize(this.xSize, this.ySize);
         this.setAction();

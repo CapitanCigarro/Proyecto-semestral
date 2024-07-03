@@ -4,7 +4,7 @@ package com.proyecto_semestral.Logic;
  * Clase que contiene las lista de horas manejadas por el programa
  */
 
-public enum ListaHoras {
+public enum EnumHoras {
     HORA0600("06:00", 0),
     HORA0700("07:00", 1),
     HORA0800("08:00", 2),
@@ -24,7 +24,7 @@ public enum ListaHoras {
     private final String hora;
     private final int index;
 
-    ListaHoras(String hora, int index) {
+    EnumHoras(String hora, int index) {
         this.hora = hora;
         this.index = index;
 

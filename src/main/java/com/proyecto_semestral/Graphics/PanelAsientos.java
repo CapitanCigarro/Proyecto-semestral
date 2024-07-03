@@ -11,5 +11,5 @@ public class PanelAsientos extends JPanel{
         super();
 
     }
-    
+
 }

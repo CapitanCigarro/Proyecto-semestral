@@ -35,7 +35,7 @@ public class EmpresaBuses {
 
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 3; j++) {
-                ListaRecorridos recEleg;
+                EnumRecorridos recEleg;
                 int choiceRec, choiceBus;
                 while(true) {
                     choiceRec = rng.nextInt(5);
@@ -47,9 +47,9 @@ public class EmpresaBuses {
 
                 }
 
-                recEleg = ListaRecorridos.values()[choiceRec];     
+                recEleg = EnumRecorridos.values()[choiceRec];     
 
-                ListaBuses busElegido; 
+                EnumBuses busElegido; 
 
                 while (true) {
                     choiceBus = rng.nextInt(3);
@@ -61,19 +61,19 @@ public class EmpresaBuses {
 
                 }
 
-                busElegido = ListaBuses.values()[choiceBus];
+                busElegido = EnumBuses.values()[choiceBus];
                 Bus tempBus;
                 switch (busElegido) {
                     case SalonCamaYSemiCama:
-                        tempBus = new BusSalonCamaYSemiCama(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
+                        tempBus = new BusSalonCamaYSemiCama(EnumHoras.values()[i].getHora(), recEleg.getRecorrido());
                         break;
 
                     case MICROBUS:
-                        tempBus = new BusMicrobus(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
+                        tempBus = new BusMicrobus(EnumHoras.values()[i].getHora(), recEleg.getRecorrido());
                         break;
 
                     case BUSNORMAL:
-                        tempBus = new BusNormal(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
+                        tempBus = new BusNormal(EnumHoras.values()[i].getHora(), recEleg.getRecorrido());
                         break;
 
                     default:
