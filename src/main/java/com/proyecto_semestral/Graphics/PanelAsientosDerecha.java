@@ -1,12 +1,11 @@
 package com.proyecto_semestral.Graphics;
 
 import java.awt.Color;
-import javax.swing.JPanel;
 
 import com.proyecto_semestral.Logic.FilaAsientos;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 
-public class PanelAsientosDerecha extends JPanel implements ActualizarColoresAsientos {
+public class PanelAsientosDerecha extends PanelAsientos implements ActualizarColoresAsientos {
     private FilaAsientosGui filaAsientos;
 
     private int xSize = Sizes.FILAASIENTOS.getXSize();

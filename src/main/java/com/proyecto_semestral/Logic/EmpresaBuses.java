@@ -31,7 +31,7 @@ public class EmpresaBuses {
     private void inicializarBuses() {
         Random rng = new Random();
         int[] auxRecorridos = {9, 9, 9, 9, 9};
-        int[] auxBus = {9, 9, 9, 9, 9};
+        int[] auxBus = {15, 15, 15};
 
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 3; j++) {
@@ -52,7 +52,7 @@ public class EmpresaBuses {
                 ListaBuses busElegido; 
 
                 while (true) {
-                    choiceBus = rng.nextInt(5);
+                    choiceBus = rng.nextInt(3);
                     if(auxBus[choiceBus] > 0) {
                         --auxBus[choiceBus];
                         break;
@@ -64,24 +64,16 @@ public class EmpresaBuses {
                 busElegido = ListaBuses.values()[choiceBus];
                 Bus tempBus;
                 switch (busElegido) {
-                    case SALONCAMA1PISO:
-                        tempBus = new SalonCama1Piso(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
-                        break;
-
-                    case SALONCAMA2PISOS:
-                        tempBus = new SalonCama2Pisos(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
+                    case SalonCamaYSemiCama:
+                        tempBus = new BusSalonCamaYSemiCama(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
                         break;
 
                     case MICROBUS:
-                        tempBus = new Microbus(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
+                        tempBus = new BusMicrobus(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
                         break;
 
-                    case BUS1PISO:
-                        tempBus = new Bus1Piso(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
-                        break;
-
-                    case BUS2PISOS:
-                        tempBus = new Bus2Pisos(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
+                    case BUSNORMAL:
+                        tempBus = new BusNormal(ListaHoras.values()[i].getHora(), recEleg.getRecorrido());
                         break;
 
                     default:

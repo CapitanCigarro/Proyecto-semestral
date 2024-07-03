@@ -19,7 +19,7 @@ public class ButtonBus extends JButton {
         super();
         this.bus = bus;
         this.panelPrincipal = panelPrincipal;
-        this.panelBus = new PanelBus(bus, g);
+        this.panelBus = new PanelBus(bus, g, this);
         this.setText(this.bus.getRecorrido());
         this.setSize(Sizes.BUTTONBUS.getXSize(), Sizes.BUTTONBUS.getYSize());
         this.setBackground(Color.DARK_GRAY);
@@ -50,13 +50,17 @@ public class ButtonBus extends JButton {
      */
 
     public void accion() {
-        this.panelPrincipal.cambiarMensaje("Hora = " + this.bus.getHoraSalida() + ", Recorrido = " + this.bus.getRecorrido() + ", Tipo = " + ListaBuses.values()[this.bus.getTipoBusIndex()].getNombre());
+        this.panelPrincipal.cambiarMensaje1("Hora = " + this.bus.getHoraSalida() + ", Recorrido = " + this.bus.getRecorrido() + ", Tipo = " + ListaBuses.values()[this.bus.getTipoBusIndex()].getNombre());
         this.panelPrincipal.estadoInicial();
         this.panelPrincipal.getFiltros().add(panelBus);
-        this.panelPrincipal.cambiarMensaje(this.bus.toString());
+        this.panelPrincipal.cambiarMensaje1(this.bus.toString());
         this.panelPrincipal.segundoEstado(this);
         this.panelPrincipal.getEmpresaBuses().getGestorDeReservas().setBusSeleccionado(bus);
         
+    }
+
+    public PanelPrincipal getPanelPrincipal() {
+        return panelPrincipal;
     }
     
 }

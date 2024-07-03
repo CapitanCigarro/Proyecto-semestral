@@ -5,20 +5,25 @@ package com.proyecto_semestral.Logic;
  */
 
 public enum ListaBuses {
-    SALONCAMA1PISO(20, 0, "Salon Cama 1 piso"),
-    SALONCAMA2PISOS(36, 1, "Salon cama 2 Pisos"), 
-    MICROBUS(20, 2, "Microbus"),  
-    BUS1PISO(24, 3, "Bus 1 piso"), 
-    BUS2PISOS(40, 4, "Bus 2 pisos");
+    SalonCamaYSemiCama(16, 20, 0, "Salon Cama / Semi Salon Cama", 1.3, 1.5), 
+    MICROBUS(20, 0, 1, "Microbus", 0.8, 0.8),  
+    BUSNORMAL(24, 0, 2, "Bus", 1, 1);
     
-    private final int numAsientos;
+    private final int asientos1erPiso;
+    private final int asientos2doPiso;
     private final int index;
     private final String nombre;
+    private final double modificador; 
+    private final double modificador2do;
 
-    ListaBuses(int numAsientos, int index, String nombre) {
-        this.numAsientos = numAsientos;
+    ListaBuses(int asientos1erPiso, int asientos2doPiso, int index, String nombre, double modificador, double modificador2do) {
+        this.asientos1erPiso = asientos1erPiso;
+        this.asientos2doPiso = asientos2doPiso;
         this.nombre = nombre;
         this.index = index;
+        this.modificador = modificador;
+        this.modificador2do = modificador2do;
+
     }
 
     public int getIndex() {
@@ -29,9 +34,19 @@ public enum ListaBuses {
         return nombre;
     }
 
-    public int getNumAsientos() {
-        return this.numAsientos;
+    public int [] getNumAsientos() {
+        int[] ret = {this.asientos1erPiso, this.asientos2doPiso};
+        return ret;
 
+    }
+
+    public double getModificador() {
+        return modificador;
+
+    }
+
+    public double getModificador2do() {
+        return modificador2do;
     }
 
 }

@@ -10,7 +10,7 @@ public class MyFrame extends JFrame {
         this.setLayout(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1200,800);
+        this.setSize(1600,800);
         this.setLocationRelativeTo(null);
         this.setTitle("Reservador de asientos");
         this.setVisible(true);

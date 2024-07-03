@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
 import com.proyecto_semestral.Logic.GestorDeReservas;
 import com.proyecto_semestral.Logic.Piso;

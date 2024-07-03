@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import com.proyecto_semestral.Logic.FilaAsientos;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 
-public class PanelAsientosIzquierda extends JPanel implements ActualizarColoresAsientos {
+public class PanelAsientosIzquierda extends PanelAsientos implements ActualizarColoresAsientos {
     private FilaAsientosGui filaAsientos;
 
     private int xSize = Sizes.FILAASIENTOS.getXSize();

@@ -5,6 +5,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.proyecto_semestral.Logic.Asiento;
 import com.proyecto_semestral.Logic.EmpresaBuses;
 import com.proyecto_semestral.Logic.ListaBuses;
 import com.proyecto_semestral.Logic.ListaHoras;
@@ -20,7 +21,7 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     private JPanel filtros;
     @SuppressWarnings("rawtypes")
     private JComboBox filtroHora, filtroRecorrido, filtroTipoBus;
-    private JLabel mensaje;
+    private JLabel mensaje1, mensaje2;
     private String accionElegida;
     private ButtonBus busElegido;
 
@@ -30,35 +31,35 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.setBackground(Color.BLACK);
         this.accionElegida = null;
         this.empresaBuses = new EmpresaBuses();
-        this.mensaje = new JLabel();
+        this.mensaje1 = new JLabel();
         this.empresaBusesGui = new EmpresaBusesGui(this.empresaBuses.getTablaBuses(), this.empresaBuses.getGestorDeReservas(), this);
         this.crearBotones();
         this.filtros = new JPanel();
         this.filtros.setBounds(0, 40, 1100, 700);
         this.filtros.setLayout(null);
-        this.mensaje.setBounds(0, 700, 600, 100);
-        this.mensaje.setForeground(Color.WHITE);
-        this.mensaje.setBackground(Color.BLACK);
-        this.add(mensaje);
+        this.mensaje1.setBounds(0, 700, 800, 100);
+        this.mensaje1.setForeground(Color.WHITE);
+        this.mensaje1.setBackground(Color.BLACK);
+        this.add(mensaje1);
         this.filtros.setBackground(Color.BLACK);
         this.add(filtros);
         this.setLayout(null);
-        this.setSize(1200, 800);
+        this.setSize(1600, 800);
         this.estadoInicial();
 
     }
 
     public void estadoInicial() {
-        this.mensaje.setText("Aqui se mostraran detalles de bus seleccionado");
+        this.mensaje1.setText("Aqui se mostraran detalles de bus seleccionado");
+        this.mensaje2.setText("Aqui se mostrara detalles de asientos seleccionados");
         this.quitarReserva.setBackground(Color.white);
         this.reservar.setBackground(Color.white);
         this.busElegido = null;
         this.accionElegida = null;
         this.empresaBuses.getGestorDeReservas().quitarReservas();
-        // TODO un-document this lines
-        // this.reservar.setVisible(false); 
-        // this.quitarReserva.setVisible(false);
-        // this.hacerAccion.setVisible(false);
+        this.reservar.setVisible(false); 
+        this.quitarReserva.setVisible(false);
+        this.hacerAccion.setVisible(false);
 
         this.filtros.removeAll();
         this.repaint();
@@ -73,8 +74,8 @@ public class PanelPrincipal extends JPanel implements MouseListener{
 
     }
 
-    public void cambiarMensaje(String s) {
-        this.mensaje.setText(s);
+    public void cambiarMensaje1(String s) {
+        this.mensaje1.setText(s);
 
     }
 
@@ -85,10 +86,10 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         }
 
         if (accionElegida == "reservar") {
-            this.cambiarMensaje(this.empresaBuses.getGestorDeReservas().reservar());
+            this.cambiarMensaje1(this.empresaBuses.getGestorDeReservas().reservar());
 
         } else {
-            this.cambiarMensaje(this.empresaBuses.getGestorDeReservas().quitarReservas());
+            this.cambiarMensaje1(this.empresaBuses.getGestorDeReservas().quitarReservas());
 
         }
 
@@ -172,7 +173,7 @@ public class PanelPrincipal extends JPanel implements MouseListener{
                     hacerAccion();
                 
                 } catch (NoAccionElegidaException exception) {
-                    mensaje.setText("Seleccionar accion");
+                    mensaje1.setText("Seleccionar accion");
 
                 }
 
@@ -223,10 +224,10 @@ public class PanelPrincipal extends JPanel implements MouseListener{
         this.reservar.setText("Reservar");
         this.quitarReserva.setText("Quitar reservas");
 
-        this.reiniciar.setLocation(1040, 720);
-        this.quitarReserva.setLocation(590, 720);
-        this.reservar.setLocation(740, 720);
-        this.hacerAccion.setLocation(890, 720);
+        this.reiniciar.setLocation(1440, 720);
+        this.quitarReserva.setLocation(990, 720);
+        this.reservar.setLocation(1140, 720);
+        this.hacerAccion.setLocation(1290, 720);
 
         this.add(hacerAccion);
         this.add(reiniciar);
@@ -264,6 +265,19 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     public void paintComponents(Graphics g) {
         super.paintComponents(g);
         
+    }
+
+    public void cambiarMensaje2() {
+        String mensaje = "Asientos seleccionados = " +  this.empresaBuses.getGestorDeReservas().toString();
+        if (this.reservar.getBackground() == Color.green) {
+            mensaje += "\n" + String.valueOf(this.empresaBuses.getGestorDeReservas().getCostoTotal());
+
+        }
+
+        this.mensaje2.setText(mensaje);
+
+        // TODO mostrar precios
+
     }
 
     @Override

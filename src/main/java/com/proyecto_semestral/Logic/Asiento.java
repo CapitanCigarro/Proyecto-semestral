@@ -1,6 +1,6 @@
 package com.proyecto_semestral.Logic;
 
-public class Asiento {
+public abstract class Asiento {
     private boolean reservado = false;
     private int numAsiento, piso;
 
@@ -47,5 +47,7 @@ public class Asiento {
     public int getPiso() {
         return this.piso;
     }
+
+    public abstract double getPrecio();
 
 }

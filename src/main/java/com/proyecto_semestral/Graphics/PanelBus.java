@@ -14,12 +14,14 @@ public class PanelBus extends JPanel implements ActualizarColoresAsientos {
 
     private Bus bus;
     private ArrayList<PanelPiso> pisos;
-    
-    public PanelBus(Bus b, GestorDeReservas g) {
+    private ButtonBus buttonBus;
+
+    public PanelBus(Bus b, GestorDeReservas g, ButtonBus buttonBus) {
         super();
         this.setBackground(Color.BLACK);
         this.setSize(xSize, ySize);
         this.bus = b;
+        this.buttonBus = buttonBus;
         this.pisos = new ArrayList<PanelPiso>();
         this.setLayout(null);
         System.out.println("Recorrido = " + b.getRecorrido() + ", Hora = " + b.getHoraSalida());
@@ -63,6 +65,10 @@ public class PanelBus extends JPanel implements ActualizarColoresAsientos {
 
         }
 
+    }
+
+    public ButtonBus getButtonBus() {
+        return buttonBus;
     }
 
 }

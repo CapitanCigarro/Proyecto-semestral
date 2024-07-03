@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public abstract class Bus {
     private String horaSalida, recorrido;
-    private int numAsientos, numPisos;
+    private int[] numAsientos; 
+    private int numPisos;
     private ArrayList<Piso> pisos;
     private ListaRecorridos recorridoElegido;
+    private double precio;
 
     /**
      * Objeto tipo Bus
@@ -16,7 +18,7 @@ public abstract class Bus {
      * @param numPisos int numero de pisos en el bus
      */
     
-    public Bus(String horaSalida, String recorrido, int numAsientos, int numPisos) {
+    public Bus(String horaSalida, String recorrido, int[] numAsientos, int numPisos) {
         this.horaSalida = horaSalida;
         this.recorrido = recorrido;
         this.numAsientos = numAsientos;
@@ -43,7 +45,7 @@ public abstract class Bus {
 
 
 
-    public int getNumAsientos() {
+    public int[] getNumAsientos() {
         return numAsientos;
     }
 
@@ -54,14 +56,14 @@ public abstract class Bus {
      * @param numPisos Numero de pisos del bus
      */
 
-    private void crearPisos(int numAsientos, int numPisos) {
+    private void crearPisos(int[] numAsientos, int numPisos) {
         this.pisos =  new ArrayList<>();
         if(numPisos == 1) {
-            pisos.add(new Piso(numAsientos, 0));
+            pisos.add(new Piso(numAsientos[0], 0, this));
 
         } else {
-            pisos.add(new Piso(numAsientos / 2, 0));
-            pisos.add(new Piso(numAsientos / 2, numAsientos / 2));
+            pisos.add(new Piso(numAsientos[0], 0, this));
+            pisos.add(new Piso(numAsientos[1], numAsientos[0], this));
 
         }
 
@@ -84,11 +86,11 @@ public abstract class Bus {
             return pisos.get(0).getAsiento(numAsiento);
 
         } else {
-            if(numAsiento< this.numAsientos / 2) {
+            if(numAsiento < this.numAsientos[0] / 2) {
                 return pisos.get(0).getAsiento(numAsiento);
 
             } else {
-                return pisos.get(1).getAsiento(numAsiento - numAsientos / 2);
+                return pisos.get(1).getAsiento(numAsiento - (numAsientos[0] + numAsientos[1]) / 2);
 
             }
 
@@ -107,8 +109,8 @@ public abstract class Bus {
                 this.recorridoElegido = ListaRecorridos.SANTIAGO;
                 break;
 
-            case "Lota" :
-                this.recorridoElegido = ListaRecorridos.LOTA;
+            case "Iquique" :
+                this.recorridoElegido = ListaRecorridos.IQUIQUE;
                 break;
 
             case "Valparaiso" :
@@ -119,8 +121,8 @@ public abstract class Bus {
                 this.recorridoElegido = ListaRecorridos.VIÑADELMAR;
                 break;
 
-            case "Coronel" :
-                this.recorridoElegido = ListaRecorridos.CORONEL;
+            case "Puerto Montt" :
+                this.recorridoElegido = ListaRecorridos.PUERTOMONTT;
                 break;
 
             default:
@@ -159,7 +161,7 @@ public abstract class Bus {
     @Override
     public String toString() {
         return "Bus : Tipo = " + ListaBuses.values()[(this.getTipoBusIndex())].getNombre() + ", Hora salida = "
-         + this.horaSalida + ", Pisos = " + String.valueOf(numPisos) + ", Asientos = " + String.valueOf(this.numAsientos) + 
+         + this.horaSalida + ", Pisos = " + String.valueOf(numPisos) + ", Asientos = " + String.valueOf(this.numAsientos[0] + this.numAsientos[1]) + 
          ", Recorrido = " + this.recorrido;
     }
 

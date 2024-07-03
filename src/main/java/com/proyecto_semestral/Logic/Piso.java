@@ -4,18 +4,19 @@ public class Piso {
     private int numAsientos, numPrimerAsiento, numPiso;
     private FilaAsientos izquierda, derecha, general;
 
-    public Piso(int numAsientos, int numPrimerAsiento) {
+    public Piso(int numAsientos, int numPrimerAsiento, Bus bus) {
         this.numAsientos = numAsientos;
         this.numPrimerAsiento = numPrimerAsiento;
-        this.crearFilasAsientos();
-
+    
         if (numPrimerAsiento == 0) {
-            numPiso = 1;
+            this.numPiso = 1;
 
         } else {
-            numPiso = 2;
+            this.numPiso = 2;
 
         }
+
+        this.crearFilasAsientos(bus);
 
     }
 
@@ -28,7 +29,7 @@ public class Piso {
      * Metodo privado que inicializa las filas de asientos en el piso
      */
 
-    private void crearFilasAsientos() {
+    private void crearFilasAsientos(Bus bus) {
         this.izquierda = new FilaAsientos();
         this.derecha = new FilaAsientos();
         this.general = new FilaAsientos();
@@ -36,9 +37,44 @@ public class Piso {
 
         for (int i = 1; i <= numAsientos; i++) {
             ++numPrimerAsiento;
-            Asiento temp = new Asiento(this.numPrimerAsiento, this.numPiso);
+
+            Asiento temp;
+            switch (bus.getTipoBus()) {
+                case BUSNORMAL:
+                    temp = new AsientoNormal(this.numPrimerAsiento, this.numPiso, bus.getRecorridoElegido().getPrecio());
+                    break;
+
+                case MICROBUS:
+                    temp = new AsientoMicrobus(this.numPrimerAsiento, this.numPiso, bus.getRecorridoElegido().getPrecio());
+                    break;
+
+                case SalonCamaYSemiCama:
+                    switch (this.numPiso) {
+                        case 1:
+                            temp = new AsientoSalonCama(this.numPrimerAsiento, this.numPiso, bus.getRecorridoElegido().getPrecio());
+                            break;
+                    
+                        case 2: 
+                            temp = new AsientoSemiSalonCama(this.numPrimerAsiento, this.numPiso, bus.getRecorridoElegido().getPrecio());
+                            break;
+
+                        default:
+                            temp = null;
+                            break;
+
+                    }
+
+                    break;
+
+                default:
+                    temp = null;
+                    break;
+
+            }
+
             general.add(temp);
             chosen.add(temp);
+
             if(i % 2 == 0) {
                 if(chosen == this.izquierda) {
                     chosen = this.derecha;

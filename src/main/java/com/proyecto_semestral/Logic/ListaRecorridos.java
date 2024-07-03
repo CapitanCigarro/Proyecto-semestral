@@ -5,20 +5,22 @@ package com.proyecto_semestral.Logic;
  */
 
 public enum ListaRecorridos {
-    SANTIAGO("Santiago", 0),
-    LOTA("Lota", 1),
-    VALPARAISO("Valparaiso", 2),
-    VIÑADELMAR("Viña del mar", 3),
-    CORONEL("Coronel", 4);
+    SANTIAGO("Santiago", 0, 10500),
+    IQUIQUE("Iquique", 1, 30000),
+    VALPARAISO("Valparaiso", 2, 14000),
+    VIÑADELMAR("Viña del mar", 3, 15000),
+    PUERTOMONTT("Puerto Montt", 4, 20000);
 
 
 
     private final String recorrido;
     private final int index;
+    private final double precio;
 
-    ListaRecorridos(String recorrido, int index) {
+    ListaRecorridos(String recorrido, int index, double precio) {
         this.index = index;
         this.recorrido = recorrido;
+        this.precio = precio;
 
     }
 
@@ -28,6 +30,10 @@ public enum ListaRecorridos {
 
     public String getRecorrido() {
         return recorrido;
+    }
+
+    public double getPrecio() {
+        return precio;
     }
 
 }

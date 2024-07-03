@@ -3,8 +3,9 @@ package com.proyecto_semestral.Logic;
 import java.util.ArrayList;
 
 public class GestorDeReservas {
-    Bus busSeleccionado;
-    ArrayList<Integer> aL;
+    private Bus busSeleccionado;
+    private ArrayList<Integer> aL;
+    private double costoTotal;
 
     /**
      * Clase que tiene la funcion de gestionar las reservas
@@ -12,6 +13,7 @@ public class GestorDeReservas {
 
     public GestorDeReservas() {
         this.aL = new ArrayList<Integer>();
+        this.costoTotal = 0;
 
     }
 
@@ -54,15 +56,12 @@ public class GestorDeReservas {
 
     public void cambiarSeleccion(int i){
         if(aL.contains(Integer.valueOf(i))) {
+            this.costoTotal -= busSeleccionado.getAsiento(i).getPrecio();
             this.quitarSeleccion(i);
 
         } else {
+            this.costoTotal += busSeleccionado.getAsiento(i).getPrecio();
             this.añadirSeleccion(i);
-
-        }
-
-        for (Integer num : this.aL)  {
-            System.out.println(num);
 
         }
 
@@ -244,6 +243,30 @@ public class GestorDeReservas {
         }
         return mensaje;
 
+    }
+
+    public double getCostoTotal() {
+        return costoTotal;
+    }
+
+    @Override
+    public String toString() {
+        String mensaje = "{";
+        for(int i = 0; 0 < this.aL.size(); i++) {
+            if (i == 0) {
+                mensaje += String.valueOf(aL.get(i));
+
+            } else {
+                mensaje += ", " + String.valueOf(aL.get(i));
+
+            }
+
+        }
+
+        mensaje += "}";
+
+        return mensaje;       
+         
     }
 
 }
