@@ -11,8 +11,11 @@ Enunciado :
 
 Patrones de diseño :
     Se utilizo el patron builder, puesto que encontre que seria mucho mas facil, 
-    comodo y ordenado ir creando el bus por partes, y de a poco ir armandolo como 
+    comodo y ordenado ir creando el bus, y su panel y relacionados por partes, y de a poco ir armandolo como 
     un objeto que contiene estas
+
+    Se utilizo tambien el patron Singleton para el panel principal, empresa de buses y su gestor relacionado, puesto que pense
+    que seria mas comodo usar solo una instancia de estos
 
 Desiciones :
     Decidi hacer el proyecto solo por no recibir respuesta de mi compañero
