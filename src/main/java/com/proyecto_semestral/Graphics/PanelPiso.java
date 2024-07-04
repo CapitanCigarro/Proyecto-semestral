@@ -71,6 +71,11 @@ public class PanelPiso extends JLayeredPane implements ActualizarColoresAsientos
 
     }
 
+    /**
+     * Metodo que cambia colores de los paneles de asientos
+     * @param color Color a ser usado
+     */
+
     private void setColor(Color color) {
         this.asientosDerecha.setColor(color);
         this.asientosIzquierda.setColor(color);

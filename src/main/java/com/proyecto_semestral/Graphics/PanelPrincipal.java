@@ -37,6 +37,10 @@ public class PanelPrincipal extends JPanel {
 
     }
 
+    /**
+     * Metodo privado para inicializar el codigo, para que constructor no se vea tan lleno
+     */
+
     @SuppressWarnings("unchecked")
     private void initialize() {
         this.setBackground(Color.BLACK);
@@ -94,6 +98,10 @@ public class PanelPrincipal extends JPanel {
         this.add(this.tipoPasaje);
 
     }
+
+    /**
+     * Metodo privado para crear e inicializar botones
+     */
 
     @SuppressWarnings("unchecked")
     private void crearBotones() {
@@ -200,6 +208,10 @@ public class PanelPrincipal extends JPanel {
 
     }
 
+    /**
+     * Metodo para reiniciar interfaz grafica a su estado inciak
+     */
+
     public void estadoInicial() {
         this.mensaje1.setText("Aqui se mostraran detalles de bus seleccionado");
         this.mensaje2.setText("Aqui se mostrara detalles de asientos seleccionados");
@@ -224,6 +236,11 @@ public class PanelPrincipal extends JPanel {
 
     }
 
+    /**
+     * Metodo para mostrar interfaz del bus seleccionado
+     * @param bus ButtonBus bus seleccionado
+     */
+
     public void segundoEstado(ButtonBus bus) {
         this.reservar();
         this.reservar.setVisible(true);
@@ -234,10 +251,19 @@ public class PanelPrincipal extends JPanel {
 
     }
 
+    /**
+     * Metodo para cambiar mensaje que se muestra en la esquina inferior izquierda
+     * @param s String mensaje
+     */
+
     public void cambiarMensaje1(String s) {
         this.mensaje1.setText(s);
 
     }
+
+    /**
+     * Metodo que actualiza el mensaje que se muestra a la derecha de la interfaz grafica
+     */
 
     public void cambiarMensaje2() {
         GestorDeReservas gestor = this.empresaBuses.getGestorDeReservas();
@@ -261,6 +287,10 @@ public class PanelPrincipal extends JPanel {
         }
 
     }
+
+    /**
+     * Metodo vinculado a boton hacerAccion, realiza accion elegida
+     */
 
     public void hacerAccion() throws NoAccionElegidaException {
         if (this.accionElegida == null) {
@@ -288,6 +318,10 @@ public class PanelPrincipal extends JPanel {
 
     }
 
+    /**
+     * Metodo vinculado a boton reservar, indica que se eligio accion "reservar"
+     */
+
     public void reservar() {
         if (this.accionElegida == "reservar") {
             this.accionElegida = "quitarReserva";
@@ -305,6 +339,10 @@ public class PanelPrincipal extends JPanel {
         }
 
     }
+
+    /**
+     * Metodo vinculado a boton quitarReserva, indica que se eligio accion "quitarReserva"
+     */
 
     public void quitarReserva() {
         if (this.accionElegida == "quitarReserva") {
@@ -326,6 +364,10 @@ public class PanelPrincipal extends JPanel {
         
 
     }
+
+    /**
+     * Metodo vinculado a boton buscar, filtra buses segun los parametros elegidos
+     */
 
     public void buscar() {
         this.estadoInicial();
