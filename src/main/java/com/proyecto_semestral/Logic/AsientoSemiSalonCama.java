@@ -13,5 +13,9 @@ public class AsientoSemiSalonCama extends Asiento{
         return precio;
     }
     
-    
+    @Override
+    public String toString() {
+        return "Asiento Semi Salon Cama";
+    }
+
 }

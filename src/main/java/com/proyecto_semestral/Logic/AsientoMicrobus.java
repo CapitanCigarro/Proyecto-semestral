@@ -12,5 +12,10 @@ public class AsientoMicrobus extends Asiento {
     public double getPrecio() {
         return precio;
     }
+
+    @Override
+    public String toString() {
+        return "Asiento Microbus";
+    }
     
 }

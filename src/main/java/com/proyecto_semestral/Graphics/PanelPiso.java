@@ -23,9 +23,9 @@ public class PanelPiso extends JLayeredPane implements ActualizarColoresAsientos
 
         this.numPiso = new JLabel();
 
-        this.numPiso.setSize(100, 30);
-        this.numPiso.setLocation(245, 650);
-        this.numPiso.setText("Piso = " + String.valueOf(piso.getnumPiso()));
+        this.numPiso.setSize(200, 30);
+        this.numPiso.setLocation(195, 650);
+        this.numPiso.setText("Piso = " + String.valueOf(piso.getnumPiso()) + " , " +piso.getAsiento(0).toString());
         this.numPiso.setBackground(Color.BLACK);
         this.numPiso.setForeground(Color.WHITE);
 

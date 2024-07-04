@@ -13,4 +13,9 @@ public class AsientoNormal extends Asiento{
         return precio;
     }
     
+    @Override
+    public String toString() {
+        return "Asiento Normal";
+    }
+
 }
