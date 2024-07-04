@@ -61,6 +61,8 @@ public class PanelPrincipal extends JPanel {
 
         }
 
+        this.tipoPasaje.setSelectedIndex(2);
+
         this.tipoPasaje.setBounds(1120, 200, 200, 30);
         this.tipoPasaje.setBackground(Color.lightGray);
         this.tipoPasaje.setForeground(Color.BLACK);

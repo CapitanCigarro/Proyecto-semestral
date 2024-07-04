@@ -8,7 +8,6 @@ public abstract class Bus {
     private int numPisos;
     private ArrayList<Piso> pisos;
     private EnumRecorridos recorridoElegido;
-    private double precio;
 
     /**
      * Objeto tipo Bus

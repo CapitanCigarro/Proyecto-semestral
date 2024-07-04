@@ -5,7 +5,7 @@ public class AsientoSemiSalonCama extends Asiento{
 
     public AsientoSemiSalonCama(int numAsiento, int piso, double precio) {
         super(numAsiento, piso);
-        this.precio = precio * EnumBuses.MICROBUS.getModificador();
+        this.precio = precio * EnumBuses.SalonCamaYSemiCama.getModificador();
 
     }
 

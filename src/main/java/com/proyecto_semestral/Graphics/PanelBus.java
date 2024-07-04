@@ -24,10 +24,8 @@ public class PanelBus extends JPanel implements ActualizarColoresAsientos {
         this.buttonBus = buttonBus;
         this.pisos = new ArrayList<PanelPiso>();
         this.setLayout(null);
-        System.out.println("Recorrido = " + b.getRecorrido() + ", Hora = " + b.getHoraSalida());
 
         for (int i = 0; i < bus.getNumPisos(); i++) {
-            System.out.println("Piso = " + i);
             PanelPiso piso = new PanelPiso(this.bus.getPisos().get(i), g, panelPrincipal);
             if(bus.getNumPisos() == 2) {
                 piso.setLocation(i * EnumSizes.PISO.getXSize(), 0);

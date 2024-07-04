@@ -21,7 +21,6 @@ public class Piso {
     }
 
     public int getnumPiso() {
-        System.out.println();
         return this.numPiso;
 
     }

@@ -26,7 +26,6 @@ public class PanelAsientosIzquierda extends PanelAsientos implements ActualizarC
                 asiento.setBounds((xSize * j) + (20 * j) + 10, (ySize * i) + (10 * i) + 10, xSize, ySize);
                 asiento.setSize(xSize, ySize);
                 this.add(asiento);
-                System.out.println("Asiento añadido = " + asiento.getAsiento().getNumAsiento());
 
             }
             
