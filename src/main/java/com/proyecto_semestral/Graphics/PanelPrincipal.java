@@ -158,10 +158,10 @@ public class PanelPrincipal extends JPanel {
         this.hacerAccion.addActionListener(hacerAccionListener);
         this.reiniciar.addActionListener(reiniciaListener);
 
-        this.reiniciar.setSize(Sizes.BOTONESPANELPRINCIPAL.getXSize(), Sizes.BOTONESPANELPRINCIPAL.getYSize());
-        this.hacerAccion.setSize(Sizes.BOTONESPANELPRINCIPAL.getXSize(), Sizes.BOTONESPANELPRINCIPAL.getYSize());
-        this.reservar.setSize(Sizes.BOTONESPANELPRINCIPAL.getXSize(), Sizes.BOTONESPANELPRINCIPAL.getYSize());
-        this.quitarReserva.setSize(Sizes.BOTONESPANELPRINCIPAL.getXSize(), Sizes.BOTONESPANELPRINCIPAL.getYSize());
+        this.reiniciar.setSize(EnumSizes.BOTONESPANELPRINCIPAL.getXSize(), EnumSizes.BOTONESPANELPRINCIPAL.getYSize());
+        this.hacerAccion.setSize(EnumSizes.BOTONESPANELPRINCIPAL.getXSize(), EnumSizes.BOTONESPANELPRINCIPAL.getYSize());
+        this.reservar.setSize(EnumSizes.BOTONESPANELPRINCIPAL.getXSize(), EnumSizes.BOTONESPANELPRINCIPAL.getYSize());
+        this.quitarReserva.setSize(EnumSizes.BOTONESPANELPRINCIPAL.getXSize(), EnumSizes.BOTONESPANELPRINCIPAL.getYSize());
 
         this.reiniciar.setText("Reiniciar");
         this.hacerAccion.setText("Realizar accion");
@@ -169,7 +169,7 @@ public class PanelPrincipal extends JPanel {
         this.quitarReserva.setText("Quitar reservas");
 
         this.reiniciar.setLocation(1440, 720);
-        this.quitarReserva.setLocation(1140, 720 - 10 - Sizes.BOTONESPANELPRINCIPAL.getYSize());
+        this.quitarReserva.setLocation(1140, 720 - 10 - EnumSizes.BOTONESPANELPRINCIPAL.getYSize());
         this.reservar.setLocation(1140, 720);
         this.hacerAccion.setLocation(1290, 720);
 
@@ -334,7 +334,7 @@ public class PanelPrincipal extends JPanel {
             boolean condTipoBus = bus.getBus().getTipoBusIndex() == this.filtroTipoBus.getSelectedIndex() || this.filtroTipoBus.getSelectedItem() == "Ignorar";
             
             if (condRecorrido && condTipoBus && condHora) {
-                bus.setLocation(Sizes.BUTTONBUS.getXSize() * (loop % 5) + 10, (loop / 5) * Sizes.BUTTONBUS.getYSize() + 10);
+                bus.setLocation(EnumSizes.BUTTONBUS.getXSize() * (loop % 5) + 10, (loop / 5) * EnumSizes.BUTTONBUS.getYSize() + 10);
                 ++loop;
                 this.filtros.add(bus);
 

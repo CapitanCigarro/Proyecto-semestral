@@ -9,7 +9,7 @@ import com.proyecto_semestral.Logic.*;
 public class ButtonAsiento extends JButton {
     private GestorDeReservas g;
     private Asiento asiento;
-    private int xSize = Sizes.ASIENTO.getXSize(), ySize = Sizes.ASIENTO.getYSize();
+    private int xSize = EnumSizes.ASIENTO.getXSize(), ySize = EnumSizes.ASIENTO.getYSize();
     private PanelPrincipal panelPrincipal;
 
     public ButtonAsiento(Asiento asiento, GestorDeReservas g, PanelPrincipal panelPrincipal) {

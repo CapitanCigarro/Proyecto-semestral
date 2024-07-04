@@ -1,6 +1,6 @@
 package com.proyecto_semestral.Graphics;
 
-public enum Sizes {
+public enum EnumSizes {
     ASIENTO(90, 100),
     FILAASIENTOS(275, 1000),
     BUS(1100, 1000),
@@ -12,7 +12,7 @@ public enum Sizes {
 
     private final int xSize, ySize;
 
-    private Sizes(int xSize, int ySize) {
+    private EnumSizes(int xSize, int ySize) {
         this.xSize = xSize;
         this.ySize = ySize;
 

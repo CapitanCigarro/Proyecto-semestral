@@ -8,8 +8,8 @@ import com.proyecto_semestral.Logic.GestorDeReservas;
 public class PanelAsientosDerecha extends PanelAsientos implements ActualizarColoresAsientos {
     private FilaAsientosGui filaAsientos;
 
-    private int xSize = Sizes.FILAASIENTOS.getXSize();
-    private int ySize = Sizes.FILAASIENTOS.getYSize();
+    private int xSize = EnumSizes.FILAASIENTOS.getXSize();
+    private int ySize = EnumSizes.FILAASIENTOS.getYSize();
 
     public PanelAsientosDerecha(FilaAsientos fila, GestorDeReservas g, PanelPrincipal panelPrincipal) {
         super();
@@ -20,7 +20,7 @@ public class PanelAsientosDerecha extends PanelAsientos implements ActualizarCol
 
         for (int i = 0; i < filaAsientos.size() / 2; i++) {
             for(int j = 0; j <= 1; j++) {
-                int xSize = Sizes.ASIENTO.getXSize(), ySize =  Sizes.ASIENTO.getYSize();
+                int xSize = EnumSizes.ASIENTO.getXSize(), ySize =  EnumSizes.ASIENTO.getYSize();
                 ButtonAsiento asiento = filaAsientos.get((i * 2) + j);
                 asiento.setBounds((xSize * j) + (20 * j) + 65, (ySize * i) + (10 * i) + 10 ,xSize, ySize);
                 asiento.setSize(xSize, ySize);

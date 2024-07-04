@@ -21,7 +21,7 @@ public class ButtonBus extends JButton {
         this.panelPrincipal = panelPrincipal;
         this.panelBus = new PanelBus(bus, g, this, panelPrincipal);
         this.setText(this.bus.getRecorrido());
-        this.setSize(Sizes.BUTTONBUS.getXSize(), Sizes.BUTTONBUS.getYSize());
+        this.setSize(EnumSizes.BUTTONBUS.getXSize(), EnumSizes.BUTTONBUS.getYSize());
         this.setBackground(Color.DARK_GRAY);
         this.setForeground(Color.white);
 

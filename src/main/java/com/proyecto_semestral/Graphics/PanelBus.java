@@ -9,8 +9,8 @@ import com.proyecto_semestral.Logic.Bus;
 import com.proyecto_semestral.Logic.GestorDeReservas;
 
 public class PanelBus extends JPanel implements ActualizarColoresAsientos {
-    private int xSize = Sizes.BUS.getXSize();
-    private int ySize = Sizes.BUS.getYSize();
+    private int xSize = EnumSizes.BUS.getXSize();
+    private int ySize = EnumSizes.BUS.getYSize();
 
     private Bus bus;
     private ArrayList<PanelPiso> pisos;
@@ -30,14 +30,14 @@ public class PanelBus extends JPanel implements ActualizarColoresAsientos {
             System.out.println("Piso = " + i);
             PanelPiso piso = new PanelPiso(this.bus.getPisos().get(i), g, panelPrincipal);
             if(bus.getNumPisos() == 2) {
-                piso.setLocation(i * Sizes.PISO.getXSize(), 0);
+                piso.setLocation(i * EnumSizes.PISO.getXSize(), 0);
                 if (i == 1) {
                     piso.setBackground(Color.BLUE);
 
                 }
 
             } else{
-                piso.setLocation(Sizes.PISO.getXSize() / 2, 0);
+                piso.setLocation(EnumSizes.PISO.getXSize() / 2, 0);
 
             }
             this.add(piso);
