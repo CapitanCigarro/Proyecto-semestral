@@ -3,7 +3,7 @@ package com.proyecto_semestral;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import javax.swing.JLayeredPane;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
@@ -77,6 +77,66 @@ public class Tests {
 
     }
 
-    
+    @Test
+    public void parametrosCorrectos() {
+        Bus bus = new BusMicrobus(EnumHoras.HORA0600.getHora(), EnumRecorridos.IQUIQUE.getRecorrido());
+
+        assertTrue(bus.getHoraSalida() == "06:00" && bus.getRecorrido() == "Iquique");
+
+    }
+
+    @Test
+    public void seleccionCorrecta() {
+        PanelPrincipal panelPrincipal = new PanelPrincipal();
+        Bus bus = new BusNormal(EnumHoras.HORA0600.getHora(), EnumRecorridos.PUERTOMONTT.getRecorrido());
+        ButtonBus buttonBus = new  ButtonBus(bus, new GestorDeReservas(), panelPrincipal);
+
+        buttonBus.accion();
+
+        assertEquals(bus, panelPrincipal.getBusElegido().getPanelBus().getBus());
+
+    }
+
+    @Test
+    public void seleccionAsientos() {
+        ArrayList<Integer> listaAsientos = new ArrayList<>();
+
+        for (int i = 1; i <= EnumBuses.MICROBUS.getNumAsientos()[0]; i++) {
+            if (i % 3 == 0) {
+                listaAsientos.add(i);
+
+            }
+
+        }
+
+        GestorDeReservas gestorDeReservas = new GestorDeReservas();
+        PanelBus panelBus = new PanelBus(new BusMicrobus(null, null), gestorDeReservas, null, null);
+        gestorDeReservas.setBusSeleccionado(panelBus.getBus());
+
+        for (PanelPiso piso : panelBus.getPisos()) {
+            for (ButtonAsiento asiento : piso.getAsientosDerecha().getFilaAsientos()) {
+                if (listaAsientos.contains(asiento.getAsiento().getNumAsiento())) {
+                    asiento.accion();
+
+                }
+
+            }
+
+            for (ButtonAsiento asiento : piso.getAsientosIzquierda().getFilaAsientos()) {
+                if (listaAsientos.contains(asiento.getAsiento().getNumAsiento())) {
+                    asiento.accion();
+
+                }
+
+            }
+
+        }
+
+        for (Integer i : listaAsientos) {
+            assertTrue(gestorDeReservas.getArrayList().contains(i));
+
+        }
+
+    }
 
 }

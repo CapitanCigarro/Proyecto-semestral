@@ -403,4 +403,12 @@ public class PanelPrincipal extends JPanel {
         
     }
 
+    public ButtonBus getBusElegido() {
+        return busElegido;
+    }
+
+    public EmpresaBusesGui getEmpresaBusesGui() {
+        return empresaBusesGui;
+    }
+
 }

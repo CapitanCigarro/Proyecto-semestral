@@ -223,7 +223,7 @@ public class GestorDeReservas {
             }
 
             if (sinReservaInicial.size() == 1) {
-                pt2 += String.valueOf(sinReservaInicial.remove(0));
+                pt2 +=", " +  String.valueOf(sinReservaInicial.remove(0));
 
             }
 
@@ -290,6 +290,10 @@ public class GestorDeReservas {
 
     public double getModificador() {
         return modificador;
+    }
+
+    public ArrayList<Integer> getArrayList() {
+        return aL;
     }
 
 }

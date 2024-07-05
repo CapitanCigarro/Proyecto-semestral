@@ -29,6 +29,22 @@ public class ButtonAsiento extends JButton {
 
     }
 
+    public void accion() {
+        g.cambiarSeleccion(asiento.getNumAsiento());
+        if (this.panelPrincipal != null) {
+            panelPrincipal.cambiarMensaje2();
+
+        }
+        if (getBackground() != Color.ORANGE) {          
+            setBackground(Color.ORANGE);
+
+        } else {
+            actualizarColor();
+            
+        }
+
+    }
+
     /**
      * Metodo privado que inicializa accion del boton, la cual pone el boton en naranja al ser seleccionado
      */
@@ -37,16 +53,7 @@ public class ButtonAsiento extends JButton {
         ActionListener aL = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                g.cambiarSeleccion(asiento.getNumAsiento());
-                panelPrincipal.cambiarMensaje2();
-                if (getBackground() != Color.ORANGE) {          
-                    setBackground(Color.ORANGE);
-
-                    } else {
-                        actualizarColor();
-                    }
-
-                
+               accion();
 
             }
 
