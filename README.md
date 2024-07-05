@@ -1,5 +1,9 @@
 # Proyecto-semestral
 
+Informacion estudiante:
+    Nombre : Nícholas Fernando García Medina
+    Grupo : 21
+
 Enunciado : 
     Tema 2: Sistema de reserva de asientos de autobús
 
