@@ -15,7 +15,7 @@ Patrones de diseño :
     un objeto que contiene estas
 
     Se utilizo tambien el patron Singleton para el panel principal, empresa de buses y su gestor relacionado, puesto que pense
-    que seria mas comodo usar solo una instancia de estos
+    que seria mas comodo usar solo una instancia de estos, y por como los programe no necesitaban en realidad mas de una instancia
 
 Desiciones :
     Decidi hacer el proyecto solo por no recibir respuesta de mi compañero
@@ -25,6 +25,7 @@ Desiciones :
     Preferi usar colores oscuros principalmente, puesto que a mi preferencia es mas comodo visualmente
 
 Problemas encontrados :
-    Si bien no senti que tuve dificultades mayores, tuve problemas al mostrar las partes de la interfaz visual, en multiples ocasiones tuve que estar un buen rato 
-    viendo una parte del codigo para que se mostrara como queria la interfaz grafica, tambien siento que pude haber mejorado la organizacion en esa parte
+    Si bien no senti que tuve dificultades mayores, tuve problemas al mostrar las partes de la interfaz visual, 
+    en multiples ocasiones tuve que estar un buen rato viendo una parte del codigo para que se mostrara como 
+    queria la interfaz grafica, tambien siento que pude haber mejorado la organizacion en esa parte
 
