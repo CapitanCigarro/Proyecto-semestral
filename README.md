@@ -4,6 +4,16 @@ Informacion estudiante:
     Nombre : Nícholas Fernando García Medina
     Grupo : 21
 
+Como usar programa:
+    Ejecutar programa
+    Seleccionar filtros (Se pueden ignorar todos para mostrar lista de todos los buses)
+    Seleccionar bus
+    Seleccionar asientos
+    Selecciona accion (Reservar o quitar reserva)
+    En caso de reservar, seleccionar tipo de pasaje
+    Presionar boton Realizar Accion
+    Si desea seleccionar otro bus, presionar boton Reiniciar
+
 Enunciado : 
     Tema 2: Sistema de reserva de asientos de autobús
 
