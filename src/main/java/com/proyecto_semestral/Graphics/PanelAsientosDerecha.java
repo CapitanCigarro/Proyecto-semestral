@@ -37,7 +37,7 @@ public class PanelAsientosDerecha extends PanelAsientos implements ActualizarCol
         return this.filaAsientos;
 
     }
-
+    
     @Override
     public void actualizarColoresAsientos() {
         for(ButtonAsiento asiento : this.filaAsientos) {
@@ -49,6 +49,11 @@ public class PanelAsientosDerecha extends PanelAsientos implements ActualizarCol
 
     public void setColor(Color color) {
         this.setBackground(color);
+
+    }
+
+    public int getNumAsientos() {
+        return this.filaAsientos.size();
 
     }
 

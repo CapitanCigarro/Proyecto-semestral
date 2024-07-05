@@ -22,7 +22,13 @@ public abstract class Bus {
         this.recorrido = recorrido;
         this.numAsientos = numAsientos;
         this.numPisos = numPisos;
-        this.setRecorridoElegido(recorrido);
+        try {
+            this.setRecorridoElegido(recorrido);
+        } catch (RecorridoElegidoNullException e) {
+            this.recorrido = null;
+
+
+        }
         crearPisos(numAsientos, numPisos);
 
     }
@@ -79,7 +85,14 @@ public abstract class Bus {
      * @return asiento del numero que se entrego al metodo
      */
 
-    public Asiento getAsiento(int numAsiento) {
+    /**
+     * Metodo para obtener asiento numero i, en caso de que parametro sea < 1 retorna primer asiento, si es mayor que la cantidad
+     * de asientos retorna el ultimo asiento
+     * @param numAsiento int numero de asiento deseado
+     * @return Asiento numero i, o null si i no esta dentro de limites
+     */
+
+    public Asiento getAsiento (int numAsiento) {
         --numAsiento;
         if(numPisos == 1) {
             return pisos.get(0).getAsiento(numAsiento);
@@ -102,7 +115,12 @@ public abstract class Bus {
      * @param s Recorrido elegido en string
      */
 
-    private void setRecorridoElegido(String s) {
+    private void setRecorridoElegido(String s) throws RecorridoElegidoNullException {
+        if (s == null) {
+            throw new RecorridoElegidoNullException();
+
+        }
+
         switch (s) {
             case "Santiago" :
                 this.recorridoElegido = EnumRecorridos.SANTIAGO;
@@ -125,6 +143,7 @@ public abstract class Bus {
                 break;
 
             default:
+                this.recorridoElegido = null;
                 break;
         }
 

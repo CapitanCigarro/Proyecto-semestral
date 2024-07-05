@@ -39,23 +39,32 @@ public class Piso {
             ++numPrimerAsiento;
 
             Asiento temp;
+
+            double precio;
+                    try {
+                        precio = bus.getRecorridoElegido().getPrecio();
+                    } catch (Exception e) {
+                        precio = 1;    
+                        // En caso de no tener recorrido, precio sera 1
+                    }
+
             switch (bus.getTipoBus()) {
                 case BUSNORMAL:
-                    temp = new AsientoNormal(this.numPrimerAsiento, this.numPiso, bus.getRecorridoElegido().getPrecio());
+                    temp = new AsientoNormal(this.numPrimerAsiento, this.numPiso, precio);
                     break;
 
                 case MICROBUS:
-                    temp = new AsientoMicrobus(this.numPrimerAsiento, this.numPiso, bus.getRecorridoElegido().getPrecio());
+                    temp = new AsientoMicrobus(this.numPrimerAsiento, this.numPiso, precio);
                     break;
 
                 case SalonCamaYSemiCama:
                     switch (this.numPiso) {
                         case 1:
-                            temp = new AsientoSalonCama(this.numPrimerAsiento, this.numPiso, bus.getRecorridoElegido().getPrecio());
+                            temp = new AsientoSalonCama(this.numPrimerAsiento, this.numPiso, precio);
                             break;
                     
                         case 2: 
-                            temp = new AsientoSemiSalonCama(this.numPrimerAsiento, this.numPiso, bus.getRecorridoElegido().getPrecio());
+                            temp = new AsientoSemiSalonCama(this.numPrimerAsiento, this.numPiso, precio);
                             break;
 
                         default:
@@ -108,12 +117,23 @@ public class Piso {
 
 
     /**
-     * Retorna asiento con numero elegido
+     * Retorna asiento con numero elegido, si i < 0 retorna primer asiento,
+     * si i >= numero ultimo asiento, retorna ultimo asiento
      * @param i Numero de asiento
      * @return Asiento i + 1
      */
 
     public Asiento getAsiento(int i) {
+        if (i < 0) {
+            return general.get(0);
+
+        }
+
+        if (i >= general.size()) {
+            return general.get(general.size() - 1);
+
+        }
+
         return general.get(i);
 
     }

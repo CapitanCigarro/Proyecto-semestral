@@ -52,4 +52,9 @@ public class PanelAsientosIzquierda extends PanelAsientos implements ActualizarC
 
     }
 
+    public int getNumAsientos() {
+        return this.filaAsientos.size();
+
+    }
+
 }

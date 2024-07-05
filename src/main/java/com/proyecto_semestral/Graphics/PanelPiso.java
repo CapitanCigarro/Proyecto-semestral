@@ -81,5 +81,10 @@ public class PanelPiso extends JLayeredPane implements ActualizarColoresAsientos
         this.asientosIzquierda.setColor(color);
 
     }
+
+    public int getNumAsientos() {
+        return this.asientosDerecha.getNumAsientos() + this.asientosIzquierda.getNumAsientos();
+
+    }
     
 }

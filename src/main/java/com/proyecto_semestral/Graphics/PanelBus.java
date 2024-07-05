@@ -69,4 +69,16 @@ public class PanelBus extends JPanel implements ActualizarColoresAsientos {
         return buttonBus;
     }
 
+    public int getNumAsientos()  {
+        int ret = 0;
+
+            for (PanelPiso pisos : this.pisos) {
+                ret += pisos.getNumAsientos();
+
+            }
+
+        return ret;
+
+    }
+
 }

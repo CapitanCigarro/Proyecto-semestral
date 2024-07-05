@@ -217,12 +217,12 @@ public class GestorDeReservas {
         if (sinReservaInicial.isEmpty() == false) {
             pt2 = "No tenian reserva = {" + String.valueOf(sinReservaInicial.remove(0));
 
-            while (reservaQuitada.size() > 1) {
+            while (sinReservaInicial.size() > 1) {
                 pt2 += ", " + String.valueOf(sinReservaInicial.remove(0));
 
             }
 
-            if (reservaQuitada.size() == 1) {
+            if (sinReservaInicial.size() == 1) {
                 pt2 += String.valueOf(sinReservaInicial.remove(0));
 
             }
